@@ -64,35 +64,46 @@ const Terminal = (props) => {
           props.showTerminal ? "fade-in" : "fade-out"
         } ${showFadeIn ? "fade-in" : ""}`}
       >
-        <div className="terminal bg-[#111111] rounded-xl h-[80%] w-[80%] sm:h-[90%] sm:w-[90%] overflow-y-scroll overflow-x-hidden">
-          {commands.map((command, index) => (
-            <React.Fragment key={index}>
-              <p className="command text-[#9FEF00] flex text-[1rem] px-[2vw] sm:px-[6vw] md:px-[4vw] py-[3vh] w-[100%] m-auto bg-[transparent]">
+        <div className="terminal rounded-xl h-[80%] w-[80%] sm:h-[90%] sm:w-[90%] overflow-y-scroll overflow-x-hidden">
+          <div className="terminal-overlay commandsContainer h-[100%] w-[100%] bg-transparent">
+            <div className="terminalheader flex items-center justify-end h-[5vh] w-[80%] sm:h-[5vh] sm:w-[90%] sm:top-[5%] rounded-xl rounded-b-none m-[auto] absolute top-[10%] bg-[#111111]">
+              <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
+                <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
+                <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44]"></div>
+                <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer"></div>
+              </div>
+            </div>
+            <div className="commandsContainer h-[auto] pt-[5vh] bg-transparent">
+              {commands.map((command, index) => (
+                <React.Fragment key={index}>
+                  <p className="command text-[#9FEF00] flex text-[1rem] px-[2vw] sm:px-[5vw] md:px-[3vw] py-[3vh] w-[100%] m-auto bg-[transparent]">
+                    {terminalLabel}{" "}
+                    <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent]">
+                      {command.input}
+                    </span>
+                  </p>
+                  <p className="output text-[#FFFFFF] flex text-[1rem] px-[2vw] sm:px-[5vw] md:px-[3vw] opacity-[0.5] w-[100%] m-auto bg-[transparent]">
+                    {command.output}
+                  </p>
+                </React.Fragment>
+              ))}
+              <p className="command text-[#9FEF00] flex text-[1rem] px-[2vw] sm:px-[5vw] py-[3vh] md:px-[3vw] w-[100%] m-auto bg-[transparent]">
                 {terminalLabel}{" "}
                 <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent]">
-                  {command.input}
+                  <input
+                    type="text"
+                    className="bg-transparent outline-none w-[100%] caret-[#9FEF00] text-[#FFFFFF] opacity-[0.8]"
+                    ref={inputRef}
+                    onBlur={handleInputBlur}
+                    onKeyDown={handleEnter}
+                    onChange={handleInputChange}
+                    spellCheck={false}
+                    value={currentCommand}
+                  ></input>
                 </span>
               </p>
-              <p className="output text-[#FFFFFF] flex text-[1rem] px-[2vw] sm:px-[6vw] md:px-[4vw] opacity-[0.5] w-[100%] m-auto bg-[transparent]">
-                {command.output}
-              </p>
-            </React.Fragment>
-          ))}
-          <p className="command text-[#9FEF00] flex text-[1rem] px-[2vw] sm:px-[6vw] py-[3vh] md:px-[4vw] w-[100%] m-auto bg-[transparent]">
-            {terminalLabel}{" "}
-            <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent]">
-              <input
-                type="text"
-                className="bg-transparent outline-none w-[100%] caret-[#9FEF00] text-[#FFFFFF] opacity-[0.8]"
-                ref={inputRef}
-                onBlur={handleInputBlur}
-                onKeyDown={handleEnter}
-                onChange={handleInputChange}
-                spellCheck={false}
-                value={currentCommand}
-              ></input>
-            </span>
-          </p>
+            </div>
+          </div>
         </div>
       </div>
     </>
