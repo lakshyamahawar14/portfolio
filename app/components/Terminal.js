@@ -2,10 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 
 const Terminal = (props) => {
   const [showFadeIn, setShowFadeIn] = useState(true);
-  const [terminalLabel, setTerminalLabel] = useState("visitor@lakshya:~$");
+  const [terminalLabel, setTerminalLabel] = useState("visitor@lakshya:/");
   const [commands, setCommands] = useState([]);
   const [currentCommand, setCurrentCommand] = useState("");
+  const [isRootUser, setIsRootUser] = useState(false);
   const inputRef = useRef(null);
+  const [visitorTerminalLabel, setVisitorTerminalLabel] =
+    useState("visitor@lakshya");
+  const [rootTerminalLabel, setRootTerminalLabel] = useState("root@lakshya");
+  const [currentDirectoryLabel, setCurrentDirectoryLabel] = useState("/");
+
+  const directoryMap = {
+    "/": [{ name: "lakshya", protected: true }],
+    "/lakshya": [],
+  };
 
   useEffect(() => {
     inputRef.current.focus();
@@ -16,32 +26,142 @@ const Terminal = (props) => {
     inputRef.current.focus();
   };
 
+  const handleScroll = () => {
+    const terminalOverlay = document.getElementById("overlay");
+    terminalOverlay?.scrollTo({
+      top: terminalOverlay.scrollHeight,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    handleScroll();
+  }, [commands]);
+
   const handleSubmit = (cmd) => {
     if (cmd === "ls") {
-      const newCommand = { input: cmd, output: "Listing files..." };
+      const currentDirectory = getCurrentDirectory();
+      const directories = directoryMap[currentDirectory] || [];
+
+      let output = "";
+      if (directories.length > 0) {
+        output = directories
+          .map((directory) => (
+            <span
+              style={{
+                color:
+                  isRootUser || !directory.protected ? "#44da44" : "#ca1111",
+              }}
+            >
+              {directory.name}
+            </span>
+          ))
+          .reduce((prev, curr) => [prev, ", ", curr]);
+      }
+
+      const newCommand = {
+        input: cmd,
+        output: output,
+        terminalLabel: terminalLabel,
+      };
+
       setCommands((prevCommands) => [...prevCommands, newCommand]);
     } else if (cmd === "pwd") {
-      const newCommand = { input: cmd, output: "/home/visitor" };
+      const newCommand = {
+        input: cmd,
+        output: getCurrentDirectory(),
+        terminalLabel: terminalLabel,
+      };
       setCommands((prevCommands) => [...prevCommands, newCommand]);
     } else if (cmd === "help") {
       const newCommand = {
         input: cmd,
         output: "Available commands: ls, pwd, help",
+        terminalLabel: terminalLabel,
       };
       setCommands((prevCommands) => [...prevCommands, newCommand]);
     } else if (cmd === "clear") {
       setCommands([]);
     } else if (cmd === "sudo") {
-      setTerminalLabel("root@kali:~#");
-      const newCommand = { input: cmd, output: "Switched to root user" };
+      setTerminalLabel("root@lakshya:/");
+      setIsRootUser(true);
+      const newCommand = {
+        input: cmd,
+        output: "Switched to root user",
+        terminalLabel: terminalLabel,
+      };
       setCommands((prevCommands) => [...prevCommands, newCommand]);
     } else if (cmd === "exit") {
       setCommands([]);
       props.onExit();
+    } else if (cmd.startsWith("cd")) {
+      const directory = cmd.substring(3).trim();
+
+      if (directory === "") {
+        const newTerminalLabel = isRootUser
+          ? "root@lakshya:/"
+          : "visitor@lakshya:/";
+
+        const newCommand = {
+          input: cmd,
+          output: "",
+          terminalLabel: newTerminalLabel,
+        };
+        setCommands((prevCommands) => [...prevCommands, newCommand]);
+        setTerminalLabel(newTerminalLabel);
+      } else {
+        const currentDirectory = getCurrentDirectory();
+        const directoryPermission =
+          isRootUser || !isDirectoryProtected(currentDirectory);
+
+        if (
+          directoryPermission &&
+          isDirectoryExists(directory, currentDirectory)
+        ) {
+          const newTerminalLabel = `${terminalLabel}${directory}/`;
+
+          const newCommand = {
+            input: cmd,
+            output: "",
+            terminalLabel: newTerminalLabel,
+          };
+          setCommands((prevCommands) => [...prevCommands, newCommand]);
+          setTerminalLabel(newTerminalLabel);
+        } else {
+          const newCommand = {
+            input: cmd,
+            output:
+              "Directory not found or you don't have permission to access this directory",
+            terminalLabel: terminalLabel,
+          };
+          setCommands((prevCommands) => [...prevCommands, newCommand]);
+        }
+      }
     } else {
-      const newCommand = { input: cmd, output: "Command not found" };
+      const newCommand = {
+        input: cmd,
+        output: "Command not found",
+        terminalLabel: terminalLabel,
+      };
       setCommands((prevCommands) => [...prevCommands, newCommand]);
     }
+  };
+
+  const getCurrentDirectory = () => {
+    const terminalLabels = terminalLabel.split(":");
+    const directoryLabel = terminalLabels[terminalLabels.length - 1];
+    return directoryLabel.trim() || "/";
+  };
+
+  const isDirectoryProtected = (directory) => {
+    const currentDirectory = directoryMap[directory];
+    return currentDirectory?.protected || false;
+  };
+
+  const isDirectoryExists = (directory, currentDirectory) => {
+    const directories = directoryMap[currentDirectory] || [];
+    const directoryInfo = directories.find((dir) => dir.name === directory);
+    return directoryInfo && (!directoryInfo.protected || isRootUser);
   };
 
   const handleEnter = (event) => {
@@ -65,8 +185,11 @@ const Terminal = (props) => {
         } ${showFadeIn ? "fade-in" : ""}`}
       >
         <div className="terminal rounded-xl h-[80%] w-[80%] sm:h-[90%] sm:w-[90%] overflow-y-scroll overflow-x-hidden">
-          <div className="terminal-overlay commandsContainer h-[100%] w-[100%] bg-transparent">
-            <div className="terminalheader flex items-center justify-end h-[5vh] w-[80%] sm:h-[5vh] sm:w-[90%] sm:top-[5%] rounded-xl rounded-b-none m-[auto] absolute top-[10%] bg-[#111111]">
+          <div
+            id="overlay"
+            className="terminal-overlay commandsContainer h-[100%] w-[100%] bg-transparent overflow-y-scroll overflow-x-hidden"
+          >
+            <div className="terminalheader flex items-center justify-end h-[5vh] w-[80%] sm:h-[5vh] sm:w-[90%] sm:top-[5%] rounded-xl rounded-b-none m-[auto] absolute top-[10%] bg-[#101010]">
               <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
                 <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
                 <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44]"></div>
@@ -77,7 +200,7 @@ const Terminal = (props) => {
               {commands.map((command, index) => (
                 <React.Fragment key={index}>
                   <p className="command text-[#9FEF00] flex text-[1rem] px-[2vw] sm:px-[5vw] md:px-[3vw] py-[3vh] w-[100%] m-auto bg-[transparent]">
-                    {terminalLabel}{" "}
+                    {command.terminalLabel}{" "}
                     <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent]">
                       {command.input}
                     </span>

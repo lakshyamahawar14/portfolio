@@ -20,21 +20,17 @@ const Greetings = (props) => {
       } ${showFadeIn ? "fade-in" : ""}`}
     >
       <div className="greetings text-[2.5rem] md:text-[2rem] sm:text-[1.5rem] w-[80%] flex flex-col justify-center items-center">
-        {props.showGreetings && (
-          <>
-            <div className="flex flex-col justify-center items-center">
-              <p className="welcome flex justify-between w-[100%] m-auto text-center">
-                <DynamicVisitorTextLoader text={"Weelcome Visitor!"} />
-              </p>
-            </div>
-            <div className="flex flex-col justify-center items-center">
-              <p className="count flex justify-between w-[100%] m-auto text-center">
-                You are <span className="text-[#FFFFFF] ml-[1vw]">734</span>th
-                visitor
-              </p>
-            </div>
-          </>
-        )}
+        <div className="flex flex-col justify-center items-center">
+          <p className="welcome flex justify-between w-[100%] m-auto text-center">
+            <DynamicVisitorTextLoader text={"Weelcome Visitor!"} />
+          </p>
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <p className="count flex justify-between w-[100%] m-auto text-center">
+            You are <span className="text-[#FFFFFF] ml-[1vw]">734</span>th
+            visitor
+          </p>
+        </div>
       </div>
     </div>
   );

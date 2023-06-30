@@ -36,14 +36,16 @@ const Home = () => {
 
   return (
     <>
-      <Greetings showGreetings={showGreetings} />
-      <Terminal
-        showTerminal={showTerminal}
-        onExit={() => {
-          setShowTerminal(() => !showTerminal);
-        }}
-      />
-      <Bye showBye={showBye} />
+      <div id="homeapp">
+        <Greetings showGreetings={showGreetings} />
+        <Terminal
+          showTerminal={showTerminal}
+          onExit={() => {
+            setShowTerminal(() => !showTerminal);
+          }}
+        />
+        <Bye showBye={showBye} />
+      </div>
     </>
   );
 };
