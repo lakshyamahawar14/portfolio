@@ -9,9 +9,12 @@
   padding: 0;
   box-sizing: border-box;
   color: #A4B1CD;
-  background-color: #060606;
+  background-color: rgb(12, 7, 37);
   font-family: 'Source Code Pro', monospace;
   user-select: none;
+  overflow-x: hidden;
+  max-height: 100vh;
+  max-width: 100vw;
 }
 
 .fade-in {

@@ -14,7 +14,12 @@ const Terminal = (props) => {
 
   const directoryMap = {
     "/": [{ name: "lakshya", protected: true }],
-    "/lakshya": [],
+    "/lakshya/": [
+      { name: "skills", protected: false },
+      { name: "projects", protected: false },
+      { name: "about", protected: false },
+      { name: "contact", protected: true },
+    ],
   };
 
   useEffect(() => {
@@ -45,18 +50,20 @@ const Terminal = (props) => {
 
       let output = "";
       if (directories.length > 0) {
-        output = directories
-          .map((directory) => (
-            <span
-              style={{
-                color:
-                  isRootUser || !directory.protected ? "#44da44" : "#ca1111",
-              }}
-            >
-              {directory.name}
-            </span>
-          ))
-          .reduce((prev, curr) => [prev, ", ", curr]);
+        output = directories.map((directory, index) => (
+          <span
+            key={index}
+            style={{
+              color: directory.protected && !isRootUser ? "#ca1111" : "#44da44",
+            }}
+          >
+            {`${directory.name} `}
+          </span>
+        ));
+
+        output = <>{output}</>;
+      } else {
+        output = "No directories found.";
       }
 
       const newCommand = {
@@ -160,8 +167,7 @@ const Terminal = (props) => {
 
   const isDirectoryExists = (directory, currentDirectory) => {
     const directories = directoryMap[currentDirectory] || [];
-    const directoryInfo = directories.find((dir) => dir.name === directory);
-    return directoryInfo && (!directoryInfo.protected || isRootUser);
+    return directories.some((dir) => dir.name === directory);
   };
 
   const handleEnter = (event) => {
@@ -210,6 +216,7 @@ const Terminal = (props) => {
                   </p>
                 </React.Fragment>
               ))}
+
               <p className="command text-[#9FEF00] flex text-[1rem] px-[2vw] sm:px-[5vw] py-[3vh] md:px-[3vw] w-[100%] m-auto bg-[transparent]">
                 {terminalLabel}{" "}
                 <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent]">

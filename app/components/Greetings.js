@@ -25,12 +25,6 @@ const Greetings = (props) => {
             <DynamicVisitorTextLoader text={"Weelcome Visitor!"} />
           </p>
         </div>
-        <div className="flex flex-col justify-center items-center">
-          <p className="count flex justify-between w-[100%] m-auto text-center">
-            You are <span className="text-[#FFFFFF] ml-[1vw]">734</span>th
-            visitor
-          </p>
-        </div>
       </div>
     </div>
   );
