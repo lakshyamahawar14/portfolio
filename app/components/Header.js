@@ -25,7 +25,7 @@ const Header = () => {
     <>
       <header
         id="header"
-        className="header h-[10vh] flex justify-between py-[3vh] px-[6vw] relative w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[10vh] sm:shadow-2xl"
+        className="header h-[10vh] flex justify-between py-[3vh] px-[6vw] relative w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[10vh] sm:shadow-2xl bg-[#101010]"
       >
         <div className="logoContainer flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[10vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw]">
           <p className="logo text-[#9FEF00] font-[800]">Lakshya</p>

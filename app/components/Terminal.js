@@ -29,16 +29,14 @@ const Terminal = (props) => {
   };
 
   const handleScroll = () => {
-    const terminalOverlay = document.getElementById("overlay");
-    terminalOverlay?.scrollTo({
-      top: terminalOverlay.scrollHeight,
-      behavior: "smooth",
-    });
+    const commandsContainer = document.querySelector(".commandsContainer");
+    const lastCommand = commandsContainer.lastElementChild;
+    lastCommand.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
   useEffect(() => {
     handleScroll();
-  }, [commands]);
+  }, [commands, inputRef.current?.value]);
 
   const handleSubmit = (cmd) => {
     if (cmd === "ls") {
@@ -206,11 +204,8 @@ const Terminal = (props) => {
     <>
       <div className="terminalContainer relative flex h-[auto] w-[auto] m-auto justify-center items-center">
         <div className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
-          <div
-            id="overlay"
-            className="terminal-overlay relative rounded-xl m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] overflow-y-scroll"
-          >
-            <div className="terminalheader flex items-center justify-end h-[5vh] w-[100%] sm:h-[5vh] sm:top-[5%] rounded-xl rounded-b-none m-[auto] bg-[#101010]">
+          <div className="terminal-overlay relative rounded-xl m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] overflow-y-scroll">
+            <div className="terminalheader fixed w-[inherit] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-[auto] bg-[#101010]">
               <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
                 <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
                 <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44]"></div>
@@ -223,7 +218,7 @@ const Terminal = (props) => {
                 ></div>
               </div>
             </div>
-            <div className="commandsContainer h-[auto] bg-transparent">
+            <div className="commandsContainer h-[auto] bg-transparent pt-[5vh]">
               {commands.map((command, index) => (
                 <React.Fragment key={index}>
                   <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
@@ -237,7 +232,6 @@ const Terminal = (props) => {
                   </p>
                 </React.Fragment>
               ))}
-
               <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
                 {terminalLabel}{" "}
                 <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent] sm:text-[0.8rem]">
