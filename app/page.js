@@ -5,16 +5,18 @@ import Header from "./components/Header";
 
 const Home = () => {
   const [showTerminal, setShowTerminal] = useState(true);
+  const [showHeader, setShowHeader] = useState(false);
 
   return (
     <>
       <div>
-        {/* <Header /> */}
+        {showHeader && <Header />}
         <Terminal
           showTerminal={showTerminal}
           onExit={() => {
             setShowTerminal(() => !showTerminal);
           }}
+          showHeader={() => setShowHeader(true)}
         />
       </div>
     </>
