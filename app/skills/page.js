@@ -1,7 +1,7 @@
 "use client";
 import Header from "../components/Header";
 
-const Skills = () => {
+const SkillsPage = () => {
   return (
     <>
       <div>
@@ -11,4 +11,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default SkillsPage;

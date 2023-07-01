@@ -1,7 +1,7 @@
 "use client";
 import Header from "../components/Header";
 
-const Contact = () => {
+const ContactPage = () => {
   return (
     <>
       <div>
@@ -11,4 +11,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;

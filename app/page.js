@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import { useRecoilState } from "recoil";
 import { showHeaderAtom } from "./states/atoms";
 
-const Home = () => {
+const HomePage = () => {
   const [showHeader, setShowHeader] = useRecoilState(showHeaderAtom);
 
   return (
@@ -15,4 +15,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

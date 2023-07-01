@@ -1,14 +1,16 @@
 "use client";
+import About from "../components/About";
 import Header from "../components/Header";
 
-const About = () => {
+const AboutPage = () => {
   return (
     <>
       <div>
         <Header />
+        <About />
       </div>
     </>
   );
 };
 
-export default About;
+export default AboutPage;

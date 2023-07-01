@@ -1,7 +1,7 @@
 "use client";
 import Header from "../components/Header";
 
-const Projects = () => {
+const ProjectsPage = () => {
   return (
     <>
       <div>
@@ -11,4 +11,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsPage;

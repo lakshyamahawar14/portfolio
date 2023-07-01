@@ -250,7 +250,7 @@ const Terminal = (props) => {
         setRemoveFocus(true);
         const newCommand = {
           input: cmd,
-          output: "Header enabled successfully.",
+          output: `Header enabled successfully`,
           terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
