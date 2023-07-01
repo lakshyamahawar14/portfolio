@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { useRecoilState } from "recoil";
 import {
   commandsAtom,
@@ -8,7 +9,7 @@ import {
   terminalLabelAtom,
 } from "../states/atoms";
 
-const Terminal = (props) => {
+const Terminal = () => {
   const baseVisitorUserLabel = "visitor@lakshya:";
   const baseRootUserLabel = "root@lakshya:";
   const [terminalLabel, setTerminalLabel] = useRecoilState(terminalLabelAtom);
@@ -28,9 +29,13 @@ const Terminal = (props) => {
       { name: "skills", type: "directory", protected: false },
       { name: "projects", type: "directory", protected: false },
       { name: "about", type: "directory", protected: false },
-      { name: "contact", type: "directory", protected: true },
+      { name: "contact", type: "directory", protected: false },
     ],
     "/gui/": [{ name: "enable_header.sh", type: "file", protected: false }],
+    "/cli/about/": [
+      { name: "profile_pic.jpg", type: "file", protected: false },
+      { name: "hint_1.txt", type: "file", protected: false },
+    ],
   };
 
   useEffect(() => {
@@ -67,6 +72,34 @@ const Terminal = (props) => {
     handleScroll();
   }, [commands, inputRef.current?.value]);
 
+  const handleShowProfilePic = (event) => {
+    const pfpElement = event.target;
+    if (pfpElement.classList.contains("pfp")) {
+      let result = (
+        <span className="flex flex-col justify-between items-start w-[auto] h-[auto]">
+          <Image
+            src="/assets/images/joker_pfp.jpg"
+            width={300}
+            height={300}
+            key={Math.random}
+            className="w-[100%] h-[auto]"
+            alt="Picture picture of Author"
+            priority={true}
+          />
+          <span className="text-[1rem] md:text-[0.9rem] sm:text-[0.7rem]">
+            Pic - Admin (Me)
+          </span>
+        </span>
+      );
+      const newCommand = {
+        input: "",
+        output: result,
+        terminalLabel: terminalLabel,
+      };
+      setCommands((prevCommands) => [...prevCommands, newCommand]);
+    }
+  };
+
   const handleSubmit = (cmd) => {
     if (cmd === "ls") {
       const currentDirectory = getCurrentDirectory();
@@ -101,11 +134,18 @@ const Terminal = (props) => {
           return (
             <span
               key={index}
-              className="pr-[10px]"
+              className={`pr-[10px] ${
+                directory.name === "profile_pic.jpg" ? "pfp" : ""
+              }`}
               style={{
                 color:
                   directory.protected && !isRootUser ? "#ca1111" : "#44da44",
               }}
+              onDoubleClick={
+                directory.name === "profile_pic.jpg"
+                  ? handleShowProfilePic
+                  : () => {}
+              }
             >
               {directory.name}
             </span>
@@ -274,6 +314,21 @@ const Terminal = (props) => {
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
       }
+    } else if (cmd.startsWith("cat")) {
+      const fileName = cmd.substring(4).trim();
+      const cwd = getCurrentDirectory();
+      let outputs = "Can't find the file or file isn't supported";
+      if (isPathValid(cwd) && isFileExists(fileName, cwd)) {
+        if (fileName === "hint_1.txt") {
+          outputs = "How do you open images?";
+        }
+      }
+      const newCommand = {
+        input: cmd,
+        output: outputs,
+        terminalLabel: terminalLabel,
+      };
+      setCommands((prevCommands) => [...prevCommands, newCommand]);
     } else {
       const newCommand = {
         input: cmd,
@@ -288,6 +343,10 @@ const Terminal = (props) => {
     const terminalLabels = terminalLabel.split(":");
     const directoryLabel = terminalLabels[terminalLabels.length - 1];
     return directoryLabel.trim() || "/";
+  };
+
+  const isPathValid = (path) => {
+    return directoryMap[path] !== undefined ? true : false;
   };
 
   const isDirectoryProtected = (directory) => {
@@ -394,7 +453,7 @@ const Terminal = (props) => {
                         {command.input}
                       </span>
                     </p>
-                    <p className="output text-[#FFFFFF] flex text-[1rem] px-[1rem] oppacity-[0.8] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
+                    <p className="output text-[#FFFFFF] flex text-[1rem] px-[1rem] oppacity-[0.8] w-[100%] h-[auto] m-auto bg-transparent sm:text-[0.8rem]">
                       {command.output}
                     </p>
                   </React.Fragment>
