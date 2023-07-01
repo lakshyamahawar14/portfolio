@@ -179,54 +179,56 @@ const Terminal = (props) => {
 
   return (
     <>
-      <div className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
-        <div
-          id="overlay"
-          className="terminal-overlay relative rounded-xl m-auto h-[75vh] w-[75vw] overflow-y-scroll"
-        >
-          <div className="terminalheader flex items-center justify-end h-[5vh] w-[100%] sm:h-[5vh] sm:top-[5%] rounded-xl rounded-b-none m-[auto] bg-[#101010]">
-            <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
-              <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
-              <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44]"></div>
-              <div
-                className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer"
-                onClick={() => {
-                  setCommands([]);
-                  props.onExit();
-                }}
-              ></div>
+      <div className="terminalContainer relative flex h-[auto] w-[auto] m-auto justify-center items-center">
+        <div className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
+          <div
+            id="overlay"
+            className="terminal-overlay relative rounded-xl m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] overflow-y-scroll"
+          >
+            <div className="terminalheader flex items-center justify-end h-[5vh] w-[100%] sm:h-[5vh] sm:top-[5%] rounded-xl rounded-b-none m-[auto] bg-[#101010]">
+              <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
+                <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
+                <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44]"></div>
+                <div
+                  className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer"
+                  onClick={() => {
+                    setCommands([]);
+                    props.onExit();
+                  }}
+                ></div>
+              </div>
             </div>
-          </div>
-          <div className="commandsContainer h-[auto] bg-transparent">
-            {commands.map((command, index) => (
-              <React.Fragment key={index}>
-                <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent">
-                  {command.terminalLabel}{" "}
-                  <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-transparent">
-                    {command.input}
-                  </span>
-                </p>
-                <p className="output text-[#FFFFFF] flex text-[1rem] px-[1rem] py-[1rem]  opacity-[0.8] w-[100%] m-auto bg-transparent">
-                  {command.output}
-                </p>
-              </React.Fragment>
-            ))}
+            <div className="commandsContainer h-[auto] bg-transparent">
+              {commands.map((command, index) => (
+                <React.Fragment key={index}>
+                  <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
+                    {command.terminalLabel}{" "}
+                    <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
+                      {command.input}
+                    </span>
+                  </p>
+                  <p className="output text-[#FFFFFF] flex text-[1rem] px-[1rem] oppacity-[0.8] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
+                    {command.output}
+                  </p>
+                </React.Fragment>
+              ))}
 
-            <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent">
-              {terminalLabel}{" "}
-              <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent]">
-                <input
-                  type="text"
-                  className="bg-transparent outline-none w-[100%] caret-[#9FEF00] text-[#FFFFFF]"
-                  ref={inputRef}
-                  onBlur={handleInputBlur}
-                  onKeyDown={handleEnter}
-                  onChange={handleInputChange}
-                  spellCheck={false}
-                  value={currentCommand}
-                ></input>
-              </span>
-            </p>
+              <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
+                {terminalLabel}{" "}
+                <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent] sm:text-[0.8rem]">
+                  <input
+                    type="text"
+                    className="bg-transparent outline-none w-[100%] caret-[#9FEF00] text-[#FFFFFF]"
+                    ref={inputRef}
+                    onBlur={handleInputBlur}
+                    onKeyDown={handleEnter}
+                    onChange={handleInputChange}
+                    spellCheck={false}
+                    value={currentCommand}
+                  ></input>
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

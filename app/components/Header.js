@@ -6,20 +6,17 @@ const Header = () => {
     const burger = document.getElementById("burger");
     const menu = document.getElementById("linksContainer");
     if (menu) {
-      if (menu.style.display === "none" || menu.style.display === "") {
+      console.log(menu.style.height);
+      if (menu.style.height === "0px" || menu.style.height === "") {
         if (burger) {
           burger.classList.add("rotated");
         }
-        document.getElementById("header").classList.add("shadow-2xl");
-        menu.style.display = "flex";
-        menu.style.opacity = "1";
+        menu.style.height = "50vh";
       } else {
         if (burger) {
           burger.classList.remove("rotated");
         }
-        document.getElementById("header").classList.remove("shadow-2xl");
-        menu.style.opacity = "0";
-        menu.style.display = "none";
+        menu.style.height = "0px";
       }
     }
   };
@@ -28,7 +25,7 @@ const Header = () => {
     <>
       <header
         id="header"
-        className="header h-[10vh] flex justify-between py-[3vh] px-[6vw] fixed top-0 w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[10vh]"
+        className="header h-[10vh] flex justify-between py-[3vh] px-[6vw] relative w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[10vh] sm:shadow-2xl"
       >
         <div className="logoContainer flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[10vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw]">
           <p className="logo text-[#9FEF00] font-[800]">Lakshya</p>
@@ -47,7 +44,7 @@ const Header = () => {
 
         <div
           id="linksContainer"
-          className="linksContainer transition-opacity ease-linear delay-0 flex justify-evenly items-center w-[100%] max-w-[600px] sm:flex-col sm:items-center sm:justify-center sm:hidden sm:min-h-[50vh] sm:opacity-0;"
+          className="linksContainer transition-all ease-linear delay-0 flex justify-evenly items-center w-[100%] max-w-[600px] sm:flex-col sm:items-center sm:justify-center sm:h-[0px]"
         >
           <div className="link hover:text-[#FFFFFF] sm:my-[auto]">
             <Link href={routes.homePath} className="text-center">

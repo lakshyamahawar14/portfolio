@@ -1,16 +1,14 @@
 "use client";
 import { useState } from "react";
 import Terminal from "./components/Terminal";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 
 const Home = () => {
   const [showTerminal, setShowTerminal] = useState(true);
 
   return (
     <>
-      <Header />
-      <div id="homeapp">
+      <div>
+        {/* <Header /> */}
         <Terminal
           showTerminal={showTerminal}
           onExit={() => {
@@ -18,7 +16,6 @@ const Home = () => {
           }}
         />
       </div>
-      <Footer />
     </>
   );
 };
