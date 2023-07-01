@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const Terminal = (props) => {
-  const [terminalLabel, setTerminalLabel] = useState("visitor@lakshya:/");
+  const [terminalLabel, setTerminalLabel] = useState(
+    "visitor@lakshya:/previous/parent/current/"
+  );
   const [commands, setCommands] = useState([]);
   const [currentCommand, setCurrentCommand] = useState("");
   const [isRootUser, setIsRootUser] = useState(false);
   const inputRef = useRef(null);
 
   const directoryMap = {
-    "/": [{ name: "lakshya", type: "directory", protected: true }],
+    "/": [
+      { name: "lakshya", type: "directory", protected: true },
+      { name: "go_for_gui", type: "directory", protected: false },
+    ],
     "/lakshya/": [
       { name: "skills", type: "directory", protected: false },
       { name: "projects", type: "directory", protected: false },
@@ -41,6 +46,7 @@ const Terminal = (props) => {
   const handleSubmit = (cmd) => {
     if (cmd === "ls") {
       const currentDirectory = getCurrentDirectory();
+
       const directories = directoryMap[currentDirectory] || [];
 
       let outputs = [];
@@ -119,6 +125,18 @@ const Terminal = (props) => {
       setCommands([]);
       props.onExit();
     } else if (cmd.startsWith("cd")) {
+      if (cmd.length >= 3 && cmd[2] != " ") {
+        const newCommand = {
+          input: cmd,
+          output: "Command not found",
+          terminalLabel: terminalLabel,
+        };
+        setCommands((prevCommands) => [...prevCommands, newCommand]);
+        return;
+      }
+      if (cmd === "cd") {
+        cmd = "cd ";
+      }
       const directory = cmd.substring(3).trim();
 
       if (directory === "") {
@@ -133,10 +151,45 @@ const Terminal = (props) => {
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
         setTerminalLabel(newTerminalLabel);
+      } else if (directory === ".") {
+        const newCommand = {
+          input: cmd,
+          output: "",
+          terminalLabel: terminalLabel,
+        };
+        setCommands((prevCommands) => [...prevCommands, newCommand]);
+      } else if (directory === "..") {
+        const currentDirectory = getCurrentDirectory();
+        let parentDirectoryName = getParentDirectory(currentDirectory);
+        let parentDirectory = parentDirectoryName;
+        if (parentDirectoryName !== "") {
+          parentDirectory += "/";
+        }
+        const newTerminalLabel = isRootUser
+          ? `root@lakshya:/${parentDirectory}`
+          : `visitor@lakshya:/${parentDirectory}`;
+        const newCommand = {
+          input: cmd,
+          output: "",
+          terminalLabel: newTerminalLabel,
+        };
+        setCommands((prevCommands) => [...prevCommands, newCommand]);
+        setTerminalLabel(newTerminalLabel);
+      } else if (directory === "/") {
+        const newTerminalLabel = isRootUser
+          ? "root@lakshya:/"
+          : "visitor@lakshya:/";
+        const newCommand = {
+          input: cmd,
+          output: "",
+          terminalLabel: newTerminalLabel,
+        };
+        setCommands((prevCommands) => [...prevCommands, newCommand]);
+        setTerminalLabel(newTerminalLabel);
       } else {
         const currentDirectory = getCurrentDirectory();
         const directoryPermission =
-          isRootUser || !isDirectoryProtected(currentDirectory);
+          isRootUser || !isDirectoryProtected(directory);
 
         if (
           directoryPermission &&
@@ -178,13 +231,41 @@ const Terminal = (props) => {
   };
 
   const isDirectoryProtected = (directory) => {
-    const currentDirectory = directoryMap[directory];
-    return currentDirectory[0].protected || false;
+    const currentDirectory = getCurrentDirectory();
+    const currentDirectoryMap = directoryMap[currentDirectory];
+    let isprotected = false;
+    currentDirectoryMap.forEach((dir) => {
+      if (dir.name === directory) {
+        isprotected = dir.protected;
+        return;
+      }
+    });
+    return isprotected;
+  };
+
+  const getParentDirectory = (directory) => {
+    const lastSlashIndex = directory.lastIndexOf("/");
+    const secondLastSlashIndex = directory.lastIndexOf("/", lastSlashIndex - 1);
+    const thirdLastSlashIndex = directory.lastIndexOf(
+      "/",
+      secondLastSlashIndex - 1
+    );
+    const parentDirectory = directory.slice(
+      thirdLastSlashIndex + 1,
+      secondLastSlashIndex
+    );
+    return parentDirectory;
+  };
+
+  const isRootDirectory = (directory) => {
+    return directory === "/";
   };
 
   const isDirectoryExists = (directory, currentDirectory) => {
     const directories = directoryMap[currentDirectory] || [];
-    return directories.some((dir) => dir.name === directory);
+    return directories.some(
+      (dir) => dir.type === "directory" && dir.name === directory
+    );
   };
 
   const handleEnter = (event) => {
