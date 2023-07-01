@@ -8,12 +8,15 @@ const Terminal = (props) => {
   const inputRef = useRef(null);
 
   const directoryMap = {
-    "/": [{ name: "lakshya", protected: true }],
+    "/": [{ name: "lakshya", type: "directory", protected: true }],
     "/lakshya/": [
-      { name: "skills", protected: false },
-      { name: "projects", protected: false },
-      { name: "about", protected: false },
-      { name: "contact", protected: true },
+      { name: "skills", type: "directory", protected: false },
+      { name: "projects", type: "directory", protected: false },
+      { name: "about", type: "directory", protected: false },
+      { name: "contact", type: "directory", protected: true },
+    ],
+    "/go_for_gui/": [
+      { name: "enable_header.sh", type: "file", protected: false },
     ],
   };
 
@@ -42,27 +45,49 @@ const Terminal = (props) => {
       const currentDirectory = getCurrentDirectory();
       const directories = directoryMap[currentDirectory] || [];
 
-      let output = "";
+      let outputs = [];
       if (directories.length > 0) {
-        output = directories.map((directory, index) => (
-          <span
-            key={index}
-            style={{
-              color: directory.protected && !isRootUser ? "#ca1111" : "#44da44",
-            }}
-          >
-            {`${directory.name} `}
-          </span>
-        ));
-
-        output = <>{output}</>;
+        directories.map((directory, index) => {
+          outputs.push(directory);
+        });
       } else {
-        output = "No directories found.";
+        outputs.push({ error: "No directories found." });
       }
+
+      let result = "";
+
+      result = outputs.map((directory, index) => {
+        if (directory.error) {
+          return (
+            <span
+              key={index}
+              className="pr-[10px]"
+              style={{
+                color: "#FFFFFF",
+              }}
+            >
+              {directory.error}
+            </span>
+          );
+        } else {
+          return (
+            <span
+              key={index}
+              className="pr-[10px]"
+              style={{
+                color:
+                  directory.protected && !isRootUser ? "#ca1111" : "#44da44",
+              }}
+            >
+              {directory.name}
+            </span>
+          );
+        }
+      });
 
       const newCommand = {
         input: cmd,
-        output: output,
+        output: result,
         terminalLabel: terminalLabel,
       };
 
@@ -156,7 +181,7 @@ const Terminal = (props) => {
 
   const isDirectoryProtected = (directory) => {
     const currentDirectory = directoryMap[directory];
-    return currentDirectory?.protected || false;
+    return currentDirectory[0].protected || false;
   };
 
   const isDirectoryExists = (directory, currentDirectory) => {
