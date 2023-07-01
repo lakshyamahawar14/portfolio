@@ -112,17 +112,6 @@ const Terminal = () => {
   };
 
   useEffect(() => {
-    if (!showHeader) {
-      if (typeof window !== "undefined") {
-        const headerStatus = localStorage.getItem("ShowHeader") === "true";
-        if (headerStatus) {
-          setShowHeader(true);
-        }
-      }
-    }
-  }, []);
-
-  useEffect(() => {
     inputRef.current.focus();
     if (showHeader) {
       setRemoveFocus(true);
