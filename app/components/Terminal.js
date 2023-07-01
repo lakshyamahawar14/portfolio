@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 import {
@@ -31,6 +32,17 @@ const Terminal = (props) => {
     ],
     "/gui/": [{ name: "enable_header.sh", type: "file", protected: false }],
   };
+
+  useEffect(() => {
+    if (!showHeader) {
+      if (typeof window !== "undefined") {
+        const headerStatus = localStorage.getItem("ShowHeader") === "true";
+        if (headerStatus) {
+          setShowHeader(true);
+        }
+      }
+    }
+  }, []);
 
   useEffect(() => {
     inputRef.current.focus();
@@ -145,7 +157,9 @@ const Terminal = (props) => {
       }
     } else if (cmd === "exit") {
       setCommands([]);
-      localStorage.setItem("ShowHeader", false);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("ShowHeader", "false");
+      }
       setShowHeader(false);
       setRemoveFocus(true);
     } else if (cmd.startsWith("cd")) {
@@ -240,7 +254,9 @@ const Terminal = (props) => {
       const filePermission = isRootUser || !isFileProtected(fileName);
 
       if (filePermission && isFileExists(fileName, currentDirectory)) {
-        localStorage.setItem("ShowHeader", true);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("ShowHeader", "true");
+        }
         setShowHeader(true);
         setRemoveFocus(true);
         const newCommand = {
@@ -330,20 +346,38 @@ const Terminal = (props) => {
     setCurrentCommand(event.target.value);
   };
 
+  const maximizeTerminal = () => {
+    const terminalElement = document.getElementById("overlay");
+    if (terminalElement) {
+      terminalElement.classList.toggle("maximize");
+    }
+  };
+
   return (
     <>
       <div className="terminalContainer relative flex h-[auto] w-[auto] m-auto justify-center items-center">
         <section className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
-          <div className="terminal-overlay relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%]">
+          <div
+            id="overlay"
+            className="terminal-overlay relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] transition-all ease-out delay-0 image-loaded"
+          >
             <div className="terminalheader absolute w-[100%] top-[auto] left-[auto] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-auto bg-[#101010]">
               <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
                 <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
-                <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44]"></div>
                 <div
-                  className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer"
+                  className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44] cursor-pointer hover:bg-[#077607]"
+                  onClick={() => {
+                    maximizeTerminal();
+                  }}
+                ></div>
+                <div
+                  className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer hover:bg-[#a41b1b]"
                   onClick={() => {
                     setCommands([]);
-                    localStorage.setItem("ShowHeader", false);
+
+                    if (typeof window !== "undefined") {
+                      localStorage.setItem("ShowHeader", "false");
+                    }
                     setShowHeader(false);
                     setRemoveFocus(false);
                   }}

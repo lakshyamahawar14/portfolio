@@ -117,3 +117,9 @@ header{
 .active{
   color: #FFFFFF;
 }
+
+.maximize{
+  transition: all ease-in 0.1s;
+  height: 100%;
+  width: 100%;
+}

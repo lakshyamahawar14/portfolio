@@ -51,7 +51,10 @@ const Header = () => {
               pathname === routes.homePath ? "active" : ""
             }`}
           >
-            <Link href={routes.homePath} className="text-center">
+            <Link
+              href={routes.homePath}
+              className="text-center hover:text-[#d0d0d0]"
+            >
               Home
             </Link>
           </div>
@@ -60,7 +63,10 @@ const Header = () => {
               pathname === routes.aboutPath ? "active" : ""
             }`}
           >
-            <Link href={routes.aboutPath} className="text-center">
+            <Link
+              href={routes.aboutPath}
+              className="text-center hover:text-[#d0d0d0]"
+            >
               About Me
             </Link>
           </div>
@@ -69,7 +75,10 @@ const Header = () => {
               pathname === routes.projectsPath ? "active" : ""
             }`}
           >
-            <Link href={routes.projectsPath} className="text-center">
+            <Link
+              href={routes.projectsPath}
+              className="text-center hover:text-[#d0d0d0]"
+            >
               Projects
             </Link>
           </div>
@@ -78,7 +87,10 @@ const Header = () => {
               pathname === routes.skillsPath ? "active" : ""
             }`}
           >
-            <Link href={routes.skillsPath} className="text-center">
+            <Link
+              href={routes.skillsPath}
+              className="text-center hover:text-[#d0d0d0]"
+            >
               Skills
             </Link>
           </div>
@@ -87,7 +99,10 @@ const Header = () => {
               pathname === routes.contactPath ? "active" : ""
             }`}
           >
-            <Link href={routes.contactPath} className="text-center">
+            <Link
+              href={routes.contactPath}
+              className="text-center hover:text-[#d0d0d0]"
+            >
               Contact Me
             </Link>
           </div>

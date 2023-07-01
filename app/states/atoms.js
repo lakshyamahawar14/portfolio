@@ -1,9 +1,8 @@
+"use client";
+
 import { atom } from "recoil";
 
-const showHeaderAtomDefaultValue =
-  localStorage.getItem("ShowHeader") === null
-    ? false
-    : localStorage.getItem("ShowHeader") === "true";
+let showHeaderAtomDefaultValue = false;
 
 export const showHeaderAtom = atom({
   key: "showHeader",
