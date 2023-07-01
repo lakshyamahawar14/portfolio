@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const Terminal = (props) => {
+  const baseVisitorUserLabel = "visitor@lakshya:";
+  const baseRootUserLabel = "root@lakshya:";
   const [terminalLabel, setTerminalLabel] = useState(
-    "visitor@lakshya:/previous/parent/current/"
+    `${baseVisitorUserLabel}/`
   );
   const [commands, setCommands] = useState([]);
   const [currentCommand, setCurrentCommand] = useState("");
@@ -113,7 +115,7 @@ const Terminal = (props) => {
     } else if (cmd === "clear") {
       setCommands([]);
     } else if (cmd === "sudo") {
-      setTerminalLabel("root@lakshya:/");
+      setTerminalLabel(`${baseRootUserLabel}/`);
       setIsRootUser(true);
       const newCommand = {
         input: cmd,
@@ -141,8 +143,8 @@ const Terminal = (props) => {
 
       if (directory === "") {
         const newTerminalLabel = isRootUser
-          ? "root@lakshya:/"
-          : "visitor@lakshya:/";
+          ? `${baseRootUserLabel}/`
+          : `${baseVisitorUserLabel}/`;
 
         const newCommand = {
           input: cmd,
@@ -160,14 +162,10 @@ const Terminal = (props) => {
         setCommands((prevCommands) => [...prevCommands, newCommand]);
       } else if (directory === "..") {
         const currentDirectory = getCurrentDirectory();
-        let parentDirectoryName = getParentDirectory(currentDirectory);
-        let parentDirectory = parentDirectoryName;
-        if (parentDirectoryName !== "") {
-          parentDirectory += "/";
-        }
+        let parentDirectory = getParentDirectory(currentDirectory);
         const newTerminalLabel = isRootUser
-          ? `root@lakshya:/${parentDirectory}`
-          : `visitor@lakshya:/${parentDirectory}`;
+          ? `${baseRootUserLabel}${parentDirectory}`
+          : `${baseVisitorUserLabel}${parentDirectory}`;
         const newCommand = {
           input: cmd,
           output: "",
@@ -177,8 +175,8 @@ const Terminal = (props) => {
         setTerminalLabel(newTerminalLabel);
       } else if (directory === "/") {
         const newTerminalLabel = isRootUser
-          ? "root@lakshya:/"
-          : "visitor@lakshya:/";
+          ? `${baseRootUserLabel}/`
+          : `${baseVisitorUserLabel}/`;
         const newCommand = {
           input: cmd,
           output: "",
@@ -246,14 +244,12 @@ const Terminal = (props) => {
   const getParentDirectory = (directory) => {
     const lastSlashIndex = directory.lastIndexOf("/");
     const secondLastSlashIndex = directory.lastIndexOf("/", lastSlashIndex - 1);
-    const thirdLastSlashIndex = directory.lastIndexOf(
-      "/",
-      secondLastSlashIndex - 1
-    );
-    const parentDirectory = directory.slice(
-      thirdLastSlashIndex + 1,
-      secondLastSlashIndex
-    );
+
+    if (directory === "/" || directory === "") {
+      return "/";
+    }
+
+    const parentDirectory = directory.slice(0, secondLastSlashIndex + 1);
     return parentDirectory;
   };
 
