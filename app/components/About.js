@@ -6,7 +6,7 @@ const About = () => {
     <>
       <div className="about relative flex h-[auto] w-[auto] m-auto justify-center items-center">
         <section className="personal relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw]">
-          <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center">
+          <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%] image-loaded">
             <Image
               src="/assets/images/joker_pfp.jpg"
               width={400}
@@ -14,8 +14,9 @@ const About = () => {
               key={Math.random}
               className="relative w-[80%] h-[auto]"
               alt="Picture picture of Author"
+              priority={true}
             />
-            <p className="text-[1.3rem] py-[1.3rem] md:text-[1rem] sm:text-[0.8rem] md:py-[1rem] sm:py-[0.8rem]">
+            <p className="text-[1.2rem] py-[1.3rem] md:text-[1rem] sm:text-[0.8rem] md:py-[1rem] sm:py-[0.8rem]">
               Pic - Admin (Me)
             </p>
           </div>
@@ -23,7 +24,7 @@ const About = () => {
             <p className="text-[2.5rem] text-[#9FEF00] text-start md:text-[2rem] sm:text-[1.5rem]">
               I'm Lakshya Mahawar
             </p>
-            <p className="text-[1.5rem] py-[2rem] md:text-[1.3rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
+            <p className="text-[1.3rem] py-[2rem] md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
               I am from <span className="text-[#fcfcfc]">Rajasthan</span> and
               I'm <span className="text-[#fcfcfc]">20</span> Years Old. My hobby
               is playing video games and watching movies. My favourite movie is{" "}

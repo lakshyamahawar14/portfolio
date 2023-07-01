@@ -211,11 +211,6 @@ const Terminal = (props) => {
         const directoryPermission =
           isRootUser || !isDirectoryProtected(directory);
 
-        console.log(
-          "directory",
-          isDirectoryExists(directory, currentDirectory)
-        );
-
         if (
           directoryPermission &&
           isDirectoryExists(directory, currentDirectory)
@@ -276,13 +271,11 @@ const Terminal = (props) => {
   const getCurrentDirectory = () => {
     const terminalLabels = terminalLabel.split(":");
     const directoryLabel = terminalLabels[terminalLabels.length - 1];
-    console.log("dirlabel", directoryLabel);
     return directoryLabel.trim() || "/";
   };
 
   const isDirectoryProtected = (directory) => {
     const currentDirectory = getCurrentDirectory();
-    console.log("current", currentDirectory);
     const currentDirectoryMap = directoryMap[currentDirectory];
     let isprotected = false;
     currentDirectoryMap.forEach((dir) => {
@@ -340,8 +333,8 @@ const Terminal = (props) => {
   return (
     <>
       <div className="terminalContainer relative flex h-[auto] w-[auto] m-auto justify-center items-center">
-        <div className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
-          <div className="relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%]">
+        <section className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
+          <div className="terminal-overlay relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%]">
             <div className="terminalheader absolute w-[100%] top-[auto] left-[auto] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-auto bg-[#101010]">
               <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
                 <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
@@ -350,13 +343,14 @@ const Terminal = (props) => {
                   className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer"
                   onClick={() => {
                     setCommands([]);
-                    setShowHeader(true);
-                    setRemoveFocus(true);
+                    localStorage.setItem("ShowHeader", false);
+                    setShowHeader(false);
+                    setRemoveFocus(false);
                   }}
                 ></div>
               </div>
             </div>
-            <div className="terminal-overlay relative rounded-xl m-auto h-[100%] w-[100%] overflow-y-scroll">
+            <div className="relative rounded-xl m-auto h-[100%] w-[100%] overflow-y-scroll">
               <div className="commandsContainer h-[auto] bg-transparent pt-[5vh]">
                 {commands.map((command, index) => (
                   <React.Fragment key={index}>
@@ -389,7 +383,7 @@ const Terminal = (props) => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </>
   );

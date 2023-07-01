@@ -1,16 +1,18 @@
 "use client";
 import About from "../components/About";
 import Header from "../components/Header";
+import { useRecoilState } from "recoil";
+import { showHeaderAtom } from "../states/atoms";
 
-const AboutPage = () => {
+const HomePage = () => {
+  const [showHeader, setShowHeader] = useRecoilState(showHeaderAtom);
+
   return (
-    <>
-      <div>
-        <Header />
-        <About />
-      </div>
-    </>
+    <div>
+      {showHeader && <Header />}
+      <About />
+    </div>
   );
 };
 
-export default AboutPage;
+export default HomePage;
