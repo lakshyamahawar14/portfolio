@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { showHeaderAtom } from "../states/atoms";
 
-const HomePage = () => {
+const AboutPage = () => {
   const [showHeader, setShowHeader] = useRecoilState(showHeaderAtom);
 
   useEffect(() => {
@@ -27,4 +27,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default AboutPage;
