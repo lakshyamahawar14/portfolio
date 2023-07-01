@@ -1,38 +1,48 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRecoilState } from "recoil";
+import {
+  commandsAtom,
+  isRootUserAtom,
+  showHeaderAtom,
+  terminalLabelAtom,
+} from "../states/atoms";
 
 const Terminal = (props) => {
   const baseVisitorUserLabel = "visitor@lakshya:";
   const baseRootUserLabel = "root@lakshya:";
-  const [terminalLabel, setTerminalLabel] = useState(
-    `${baseVisitorUserLabel}/`
-  );
-  const [commands, setCommands] = useState([]);
+  const [terminalLabel, setTerminalLabel] = useRecoilState(terminalLabelAtom);
+  const [commands, setCommands] = useRecoilState(commandsAtom);
   const [currentCommand, setCurrentCommand] = useState("");
-  const [isRootUser, setIsRootUser] = useState(false);
+  const [isRootUser, setIsRootUser] = useRecoilState(isRootUserAtom);
+  const [removeFocus, setRemoveFocus] = useState(false);
+  const [showHeader, setShowHeader] = useRecoilState(showHeaderAtom);
   const inputRef = useRef(null);
 
   const directoryMap = {
     "/": [
-      { name: "lakshya", type: "directory", protected: true },
-      { name: "go_for_gui", type: "directory", protected: false },
+      { name: "cli", type: "directory", protected: true },
+      { name: "gui", type: "directory", protected: false },
     ],
-    "/lakshya/": [
+    "/cli/": [
       { name: "skills", type: "directory", protected: false },
       { name: "projects", type: "directory", protected: false },
       { name: "about", type: "directory", protected: false },
       { name: "contact", type: "directory", protected: true },
     ],
-    "/go_for_gui/": [
-      { name: "enable_header.sh", type: "file", protected: false },
-    ],
+    "/gui/": [{ name: "enable_header.sh", type: "file", protected: false }],
   };
 
   useEffect(() => {
     inputRef.current.focus();
+    if (showHeader) {
+      setRemoveFocus(true);
+    }
   }, []);
 
   const handleInputBlur = () => {
-    inputRef.current.focus();
+    if (!removeFocus) {
+      inputRef.current.focus();
+    }
   };
 
   const handleScroll = () => {
@@ -135,7 +145,9 @@ const Terminal = (props) => {
       }
     } else if (cmd === "exit") {
       setCommands([]);
-      props.onExit();
+      localStorage.setItem("ShowHeader", false);
+      setShowHeader(false);
+      setRemoveFocus(true);
     } else if (cmd.startsWith("cd")) {
       if (cmd.length >= 3 && cmd[2] != " ") {
         const newCommand = {
@@ -199,6 +211,11 @@ const Terminal = (props) => {
         const directoryPermission =
           isRootUser || !isDirectoryProtected(directory);
 
+        console.log(
+          "directory",
+          isDirectoryExists(directory, currentDirectory)
+        );
+
         if (
           directoryPermission &&
           isDirectoryExists(directory, currentDirectory)
@@ -228,7 +245,9 @@ const Terminal = (props) => {
       const filePermission = isRootUser || !isFileProtected(fileName);
 
       if (filePermission && isFileExists(fileName, currentDirectory)) {
-        props.showHeader();
+        localStorage.setItem("ShowHeader", true);
+        setShowHeader(true);
+        setRemoveFocus(true);
         const newCommand = {
           input: cmd,
           output: "Header enabled successfully.",
@@ -257,11 +276,13 @@ const Terminal = (props) => {
   const getCurrentDirectory = () => {
     const terminalLabels = terminalLabel.split(":");
     const directoryLabel = terminalLabels[terminalLabels.length - 1];
+    console.log("dirlabel", directoryLabel);
     return directoryLabel.trim() || "/";
   };
 
   const isDirectoryProtected = (directory) => {
     const currentDirectory = getCurrentDirectory();
+    console.log("current", currentDirectory);
     const currentDirectoryMap = directoryMap[currentDirectory];
     let isprotected = false;
     currentDirectoryMap.forEach((dir) => {
@@ -329,7 +350,8 @@ const Terminal = (props) => {
                   className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer"
                   onClick={() => {
                     setCommands([]);
-                    props.onExit();
+                    setShowHeader(true);
+                    setRemoveFocus(true);
                   }}
                 ></div>
               </div>

@@ -1,25 +1,17 @@
 "use client";
-import { useState } from "react";
 import Terminal from "./components/Terminal";
 import Header from "./components/Header";
+import { useRecoilState } from "recoil";
+import { showHeaderAtom } from "./states/atoms";
 
 const Home = () => {
-  const [showTerminal, setShowTerminal] = useState(true);
-  const [showHeader, setShowHeader] = useState(false);
+  const [showHeader, setShowHeader] = useRecoilState(showHeaderAtom);
 
   return (
-    <>
-      <div>
-        {showHeader && <Header />}
-        <Terminal
-          showTerminal={showTerminal}
-          onExit={() => {
-            setShowTerminal(() => !showTerminal);
-          }}
-          showHeader={() => setShowHeader(true)}
-        />
-      </div>
-    </>
+    <div>
+      {showHeader && <Header />}
+      <Terminal />
+    </div>
   );
 };
 

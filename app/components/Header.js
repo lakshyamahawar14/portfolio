@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { routes } from "../routes";
+import { routes } from "../states/paths";
 
 const Header = () => {
   const handleMenu = () => {
@@ -25,26 +25,27 @@ const Header = () => {
     <>
       <header
         id="header"
-        className="header h-[10vh] flex justify-between py-[3vh] px-[6vw] relative w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[10vh] sm:shadow-2xl bg-[#101010]"
+        className="header h-[10vh] flex justify-between py-[3vh] px-[6vw] relative w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[10vh] shadow-2xl bg-[#101010]"
       >
-        <div className="logoContainer flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[10vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw]">
+        <div className="logoContainer z-[30] flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[10vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw]">
           <p className="logo text-[#9FEF00] font-[800]">Lakshya</p>
-          <p
-            id="burger"
-            onClick={handleMenu}
-            className="burger h-[20px] text-[1.5rem] cursor-pointer z-70 transition-all ease-linear delay-0 font-[600] hidden sm:inline bg-transparent"
-          >
-            <span className="flex text-[#9FEF00] flex-col justify-evenly items-center h-[100%] w-[20px]">
-              <line className="h-[2px] bg-[#9FEF00] w-[100%]"></line>
-              <line className="h-[2px] bg-[#9FEF00] w-[100%]"></line>
-              <line className="h-[2px] bg-[#9FEF00] w-[100%]"></line>
-            </span>
-          </p>
+        </div>
+
+        <div
+          id="burger"
+          onClick={handleMenu}
+          className="burger z-[90] h-[10vh] text-[1.5rem] cursor-pointer transition-all ease-linear delay-0 sm:flex justify-center items-center absolute top-0 right-0 px-[6vw] hidden"
+        >
+          <span className="flex text-[#9FEF00] flex-col justify-evenly items-center h-[35%] w-[20px]">
+            <span className="h-[2px] bg-[#9FEF00] w-[100%]"></span>
+            <span className="h-[2px] bg-[#9FEF00] w-[100%]"></span>
+            <span className="h-[2px] bg-[#9FEF00] w-[100%]"></span>
+          </span>
         </div>
 
         <div
           id="linksContainer"
-          className="linksContainer transition-all ease-linear delay-0 flex justify-evenly items-center w-[100%] max-w-[600px] sm:flex-col sm:items-center sm:justify-center sm:h-[0px]"
+          className="linksContainer z-[40] transition-all ease-linear delay-0 flex justify-evenly items-center w-[100%] max-w-[600px] sm:flex-col sm:items-center sm:justify-center sm:h-[0px]"
         >
           <div className="link hover:text-[#FFFFFF] sm:my-[auto]">
             <Link href={routes.homePath} className="text-center">
