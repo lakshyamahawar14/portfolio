@@ -22,19 +22,92 @@ const Terminal = () => {
 
   const directoryMap = {
     "/": [
-      { name: "cli", type: "directory", protected: true },
-      { name: "gui", type: "directory", protected: false },
+      {
+        name: "cli",
+        type: "directory",
+        protected: true,
+        protection_type: "privilage",
+      },
+      {
+        name: "gui",
+        type: "directory",
+        protected: false,
+        protection_type: "none",
+      },
     ],
     "/cli/": [
-      { name: "skills", type: "directory", protected: false },
-      { name: "projects", type: "directory", protected: false },
-      { name: "about", type: "directory", protected: false },
-      { name: "contact", type: "directory", protected: false },
+      {
+        name: "skills",
+        type: "directory",
+        protected: false,
+        protection_type: "none",
+      },
+      {
+        name: "projects",
+        type: "directory",
+        protected: false,
+        protection_type: "none",
+      },
+      {
+        name: "about",
+        type: "directory",
+        protected: false,
+        protection_type: "none",
+      },
+      {
+        name: "contact",
+        type: "directory",
+        protected: false,
+        protection_type: "none",
+      },
     ],
-    "/gui/": [{ name: "enable_header.sh", type: "file", protected: false }],
+    "/gui/": [
+      {
+        name: "enable_header.sh",
+        type: "file",
+        protected: false,
+        protection_type: "none",
+      },
+    ],
     "/cli/about/": [
-      { name: "profile_pic.jpg", type: "file", protected: false },
-      { name: "hint_1.txt", type: "file", protected: false },
+      {
+        name: "profile_pic.jpg",
+        type: "file",
+        protected: true,
+        protection_type: "access",
+      },
+      {
+        name: "hint_1.txt",
+        type: "file",
+        protected: false,
+        protection_type: "none",
+      },
+      {
+        name: "favourites",
+        type: "directory",
+        protected: false,
+        protection_type: "none",
+      },
+    ],
+    "/cli/about/favourites/": [
+      {
+        name: "game.jc3",
+        type: "file",
+        protected: true,
+        protection_type: "password",
+      },
+      {
+        name: "movie.ilr",
+        type: "file",
+        protected: true,
+        protection_type: "password",
+      },
+      {
+        name: "character.jkr",
+        type: "file",
+        protected: false,
+        protection_type: "none",
+      },
     ],
   };
 
@@ -76,7 +149,7 @@ const Terminal = () => {
     const pfpElement = event.target;
     if (pfpElement.classList.contains("pfp")) {
       let result = (
-        <span className="flex flex-col justify-between items-start w-[auto] h-[auto]">
+        <span className="flex flex-col justify-between items-start w-[auto] h-[auto] min-h[300px]">
           <Image
             src="/assets/images/joker_pfp.jpg"
             width={300}
@@ -138,8 +211,15 @@ const Terminal = () => {
                 directory.name === "profile_pic.jpg" ? "pfp" : ""
               }`}
               style={{
-                color:
-                  directory.protected && !isRootUser ? "#ca1111" : "#44da44",
+                color: !directory.protected
+                  ? "#44da44"
+                  : directory.protection_type === "privilage"
+                  ? !isRootUser
+                    ? "#ca1111"
+                    : "#44da44"
+                  : directory.protection_type === "access"
+                  ? "#d9d202"
+                  : "#022dd9",
               }}
               onDoubleClick={
                 directory.name === "profile_pic.jpg"
@@ -263,7 +343,8 @@ const Terminal = () => {
       } else {
         const currentDirectory = getCurrentDirectory();
         const directoryPermission =
-          isRootUser || !isDirectoryProtected(directory);
+          isRootUserAccessible(directory, currentDirectory) ||
+          !isDirectoryProtected(directory);
 
         if (
           directoryPermission &&
@@ -291,7 +372,9 @@ const Terminal = () => {
     } else if (cmd === "./enable_header.sh") {
       const fileName = cmd.substring(2);
       const currentDirectory = getCurrentDirectory();
-      const filePermission = isRootUser || !isFileProtected(fileName);
+      const filePermission =
+        isRootUserAccessible(fileName, currentDirectory) ||
+        !isFileProtected(fileName);
 
       if (filePermission && isFileExists(fileName, currentDirectory)) {
         if (typeof window !== "undefined") {
@@ -403,6 +486,19 @@ const Terminal = () => {
 
   const handleInputChange = (event) => {
     setCurrentCommand(event.target.value);
+  };
+
+  const isRootUserAccessible = (directory, currentDirectory) => {
+    const directories = directoryMap[currentDirectory] || [];
+    const matchedFile = directories.find((dir) => dir.name === directory);
+    if (
+      matchedFile &&
+      (matchedFile.protection_type === "privilage" ||
+        matchedFile.protection_type === "none")
+    ) {
+      return isRootUser;
+    }
+    return false;
   };
 
   const maximizeTerminal = () => {

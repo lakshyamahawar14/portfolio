@@ -58,6 +58,18 @@ header{
   animation: zoom 10s infinite alternate;
 }
 
+@keyframes zoom {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 .terminal-overlay{
   background-color: rgba(0, 0, 0, 0.8);
 }
