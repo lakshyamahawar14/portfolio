@@ -115,14 +115,24 @@ const Terminal = (props) => {
     } else if (cmd === "clear") {
       setCommands([]);
     } else if (cmd === "sudo") {
-      setTerminalLabel(`${baseRootUserLabel}/`);
-      setIsRootUser(true);
-      const newCommand = {
-        input: cmd,
-        output: "Switched to root user",
-        terminalLabel: terminalLabel,
-      };
-      setCommands((prevCommands) => [...prevCommands, newCommand]);
+      const cwd = getCurrentDirectory();
+      if (!isRootUser) {
+        setIsRootUser(true);
+        setTerminalLabel(`${baseRootUserLabel}${cwd}`);
+        const newCommand = {
+          input: cmd,
+          output: "You are now logged in as root.",
+          terminalLabel: terminalLabel,
+        };
+        setCommands((prevCommands) => [...prevCommands, newCommand]);
+      } else {
+        const newCommand = {
+          input: cmd,
+          output: "You are already logged in as root.",
+          terminalLabel: terminalLabel,
+        };
+        setCommands((prevCommands) => [...prevCommands, newCommand]);
+      }
     } else if (cmd === "exit") {
       setCommands([]);
       props.onExit();
@@ -149,7 +159,7 @@ const Terminal = (props) => {
         const newCommand = {
           input: cmd,
           output: "",
-          terminalLabel: newTerminalLabel,
+          terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
         setTerminalLabel(newTerminalLabel);
@@ -169,7 +179,7 @@ const Terminal = (props) => {
         const newCommand = {
           input: cmd,
           output: "",
-          terminalLabel: newTerminalLabel,
+          terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
         setTerminalLabel(newTerminalLabel);
@@ -180,7 +190,7 @@ const Terminal = (props) => {
         const newCommand = {
           input: cmd,
           output: "",
-          terminalLabel: newTerminalLabel,
+          terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
         setTerminalLabel(newTerminalLabel);
@@ -198,7 +208,7 @@ const Terminal = (props) => {
           const newCommand = {
             input: cmd,
             output: "",
-            terminalLabel: newTerminalLabel,
+            terminalLabel: terminalLabel,
           };
           setCommands((prevCommands) => [...prevCommands, newCommand]);
           setTerminalLabel(newTerminalLabel);
