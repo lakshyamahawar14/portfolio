@@ -25,7 +25,6 @@ const About = () => {
               I'm Lakshya Mahawar
             </p>
             <p className="text-[1.3rem] py-[2rem] md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
-              I am from <span className="text-[#fcfcfc]">Rajasthan</span> and
               I'm <span className="text-[#fcfcfc]">20</span> Years Old. My hobby
               is playing video games and watching movies. My favourite movie is{" "}
               <span className="text-[#fcfcfc]">Interstellar</span> (but my

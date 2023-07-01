@@ -9,7 +9,6 @@ const Header = () => {
     const burger = document.getElementById("burger");
     const menu = document.getElementById("linksContainer");
     if (menu) {
-      console.log(menu.style.height);
       if (menu.style.height === "0px" || menu.style.height === "") {
         if (burger) {
           burger.classList.add("rotated");
@@ -48,21 +47,25 @@ const Header = () => {
           className="linksContainer z-[40] transition-all ease-linear delay-0 flex justify-evenly items-center w-[100%] max-w-[600px] sm:flex-col sm:items-center sm:justify-center sm:h-[0px]"
         >
           <div
-            className={`link ${pathname === routes.homePath ? "active" : ""}`}
+            className={`m-auto link ${
+              pathname === routes.homePath ? "active" : ""
+            }`}
           >
             <Link href={routes.homePath} className="text-center">
               Home
             </Link>
           </div>
           <div
-            className={`link ${pathname === routes.aboutPath ? "active" : ""}`}
+            className={`m-auto link ${
+              pathname === routes.aboutPath ? "active" : ""
+            }`}
           >
             <Link href={routes.aboutPath} className="text-center">
               About Me
             </Link>
           </div>
           <div
-            className={`link ${
+            className={`m-auto link ${
               pathname === routes.projectsPath ? "active" : ""
             }`}
           >
@@ -71,14 +74,16 @@ const Header = () => {
             </Link>
           </div>
           <div
-            className={`link ${pathname === routes.skillsPath ? "active" : ""}`}
+            className={`m-auto link ${
+              pathname === routes.skillsPath ? "active" : ""
+            }`}
           >
             <Link href={routes.skillsPath} className="text-center">
               Skills
             </Link>
           </div>
           <div
-            className={`link ${
+            className={`m-auto link ${
               pathname === routes.contactPath ? "active" : ""
             }`}
           >

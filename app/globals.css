@@ -66,6 +66,10 @@ header{
   overflow-y: hidden;
 }
 
+.personal{
+  overflow-y: hidden;
+}
+
 .personal::before {
   content: "";
   position: absolute;
@@ -75,27 +79,25 @@ header{
   height: 100%;
   width: 100%;
   opacity: 0.2;
-  background-image: url('/assets/images/batman_bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   z-index: 0;
-  animation: zoom 10s infinite alternate;
+  animation: zoomAndSlideShow 18s infinite alternate;
 }
 
-.personal{
-  overflow-y: hidden;
-}
-
-@keyframes zoom {
-  0% {
+@keyframes zoomAndSlideShow {
+  0%, 100% {
+    background-image: url('/assets/images/batman_bg.jpg');
     transform: translate(-50%, -50%) scale(1);
   }
-  50% {
-    transform: translate(-50%, -50%) scale(1.2);
+  33.33% {
+    background-image: url('/assets/images/interstellar_bg.jpg');
+    transform: translate(-50%, -50%) scale(1.1);
   }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
+  66.66% {
+    background-image: url('/assets/images/justcause3_bg.jpg');
+    transform: translate(-50%, -50%) scale(0.9);
   }
 }
 
