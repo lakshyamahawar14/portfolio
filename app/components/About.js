@@ -17,7 +17,7 @@ const About = () => {
               priority={true}
             />
             <p className="text-[1.2rem] py-[1.3rem] md:text-[1rem] sm:text-[0.8rem] md:py-[1rem] sm:py-[0.8rem]">
-              Pic - Admin &lpar;Me&rpar;
+              Pic - Admin (Me)
             </p>
           </div>
           <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
@@ -27,16 +27,15 @@ const About = () => {
             <p className="text-[1.3rem] py-[2rem] md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
               I&apos;m <span className="text-[#fcfcfc]">20</span> Years Old. My
               hobby is playing video games and watching movies. My favourite
-              movie is <span className="text-[#fcfcfc]">Interstellar</span>{" "}
-              &lpar;but my character is more like{" "}
+              movie is <span className="text-[#fcfcfc]">Interstellar</span> (but
+              my character is more like{" "}
               <span className="text-[#fcfcfc]">Joker</span> from{" "}
-              <span className="text-[#fcfcfc]">The Dark Knight</span>&rpar; and
+              <span className="text-[#fcfcfc]">The Dark Knight</span>) and
               favourte game is{" "}
-              <span className="text-[#fcfcfc]">Just Cause 3</span>{" "}
-              &lpar;underrated, tho i&apos;ve played almost all major AAA
-              games&rpar;. And yeah, I study in{" "}
-              <span className="text-[#fcfcfc]">IIT Roorkee</span> under B. Tech
-              programme.
+              <span className="text-[#fcfcfc]">Just Cause 3</span> (underrated,
+              tho i&apos;ve played almost all major AAA games). And yeah, I
+              study in <span className="text-[#fcfcfc]">IIT Roorkee</span> under
+              B. Tech programme.
             </p>
           </div>
         </section>
