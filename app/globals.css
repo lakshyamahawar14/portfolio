@@ -49,7 +49,7 @@ header{
   transform: translate(-50%, -50%);
   height: 100%;
   width: 100%;
-  opacity: 0.8;
+  opacity: 1;
   background-image: url('/assets/images/kali_bg.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -155,7 +155,7 @@ header{
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.2);
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
@@ -167,7 +167,7 @@ header{
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: translate(-50%, -50%) scale(0.84);
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
