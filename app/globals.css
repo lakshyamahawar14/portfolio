@@ -67,12 +67,12 @@ header{
   height: 100%;
   width: 100%;
   opacity: 0.3;
-  background-image: url('/assets/images/galaxy_bg.png');
+  background-image: url('/assets/images/contact_bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   z-index: 0;
-  animation: zoomIn 10s infinite alternate;
+  animation: zoomOut 10s infinite alternate;
 }
 
 
@@ -101,9 +101,8 @@ header{
   background-size: cover;
   background-position: center;
   z-index: 0;
-  /* animation: zoomAndSlideShow 18s infinite alternate; */
-  background-image: url('/assets/images/batman_bg.jpg');
-  animation: zoomOut 18s infinite alternate;
+  background-image: url('/assets/images/about_bg.jpg');
+  animation: zoomIn 10s infinite alternate;
 }
 
 .projects, .mazeai, .skills{
@@ -123,12 +122,12 @@ header{
   background-size: cover;
   background-position: center;
   z-index: 0;
-  background-image: url('/assets/images/luxhealth_bg.jpg');
+  background-image: url('/assets/images/project_bg.jpg');
   animation: zoomOut 10s infinite alternate;
 }
 
 .mazeai::before{
-  background-image: url('/assets/images/mazeai_bg.jpg');
+  background-image: url('/assets/images/project2_bg.jpg');
 }
 
 .skills::before{
@@ -168,7 +167,7 @@ header{
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(0.9);
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
