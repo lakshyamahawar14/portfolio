@@ -88,25 +88,45 @@ const Terminal = () => {
         protected: false,
         protection_type: "none",
       },
+      {
+        name: "hobbies",
+        type: "directory",
+        protected: false,
+        protection_type: "none",
+      },
     ],
     "/cli/about/favourites/": [
       {
         name: "game.jc3",
         type: "file",
         protected: true,
-        protection_type: "password",
+        protection_type: "codeword",
       },
       {
         name: "movie.ilr",
         type: "file",
         protected: true,
-        protection_type: "password",
+        protection_type: "codeword",
       },
       {
         name: "character.jkr",
         type: "file",
+        protected: true,
+        protection_type: "codeword",
+      },
+      {
+        name: "hint_2.txt",
+        type: "file",
         protected: false,
         protection_type: "none",
+      },
+    ],
+    "/cli/about/hobbies/": [
+      {
+        name: "hobbies.py",
+        type: "file",
+        protected: true,
+        protection_type: "access",
       },
     ],
   };
@@ -424,7 +444,98 @@ const Terminal = () => {
       if (isPathValid(cwd) && isFileExists(fileName, cwd)) {
         if (fileName === "hint_1.txt") {
           outputs = "How do you open images?";
+        } else if (fileName === "hint_2.txt") {
+          outputs = "christopher_nolan.txt text";
         }
+      }
+      const newCommand = {
+        input: cmd,
+        output: outputs,
+        terminalLabel: terminalLabel,
+      };
+      setCommands((prevCommands) => [...prevCommands, newCommand]);
+    } else if (cmd.startsWith("character.jkr ")) {
+      const fileName = cmd.substring(14).trim();
+      const cwd = getCurrentDirectory();
+      let outputs = "Invalid code";
+      if (!isFileExists("character.jkr", cwd)) {
+        outputs = "Can't find the file or file isn't supported";
+      } else if (
+        isPathValid(cwd) &&
+        (fileName === "joker" || fileName === "Joker")
+      ) {
+        outputs = (
+          <span>
+            My favourite character is{" "}
+            <span className="text-[#fcfcfc]">Joker</span> from{" "}
+            <span className="text-[#fcfcfc]">The Dark Knight</span>
+          </span>
+        );
+      }
+      const newCommand = {
+        input: cmd,
+        output: outputs,
+        terminalLabel: terminalLabel,
+      };
+      setCommands((prevCommands) => [...prevCommands, newCommand]);
+    } else if (cmd.startsWith("movie.ilr ")) {
+      const fileName = cmd.substring(10).trim();
+      const cwd = getCurrentDirectory();
+      let outputs = "Invalid code";
+      if (!isFileExists("movie.ilr", cwd)) {
+        outputs = "Can't find the file or file isn't supported";
+      } else if (
+        isPathValid(cwd) &&
+        (fileName === "interstellar" || fileName === "Interstellar")
+      ) {
+        outputs = (
+          <span>
+            My favourite movie is{" "}
+            <span className="text-[#fcfcfc]">Interstellar</span>
+          </span>
+        );
+      }
+      const newCommand = {
+        input: cmd,
+        output: outputs,
+        terminalLabel: terminalLabel,
+      };
+      setCommands((prevCommands) => [...prevCommands, newCommand]);
+    } else if (cmd.startsWith("game.jc3 ")) {
+      const fileName = cmd.substring(9).trim();
+      const cwd = getCurrentDirectory();
+      let outputs = "Invalid code";
+      if (!isFileExists("game.jc3", cwd)) {
+        outputs = "Can't find the file or file isn't supported";
+      } else if (
+        isPathValid(cwd) &&
+        (fileName === "just cause 3" || fileName === "Just Cause 3")
+      ) {
+        outputs = (
+          <span>
+            My favourte game is{" "}
+            <span className="text-[#fcfcfc]">Just Cause 3</span> (underrated,
+            tho i&apos;ve played almost all major AAA games)
+          </span>
+        );
+      }
+      const newCommand = {
+        input: cmd,
+        output: outputs,
+        terminalLabel: terminalLabel,
+      };
+      setCommands((prevCommands) => [...prevCommands, newCommand]);
+    } else if (cmd.startsWith("python3 ")) {
+      const fileName = cmd.substring(8).trim();
+      console.log(fileName);
+      const cwd = getCurrentDirectory();
+      let outputs = "Invalid code";
+      if (!isFileExists(fileName, cwd)) {
+        outputs = "Can't find the file or file isn't supported";
+      } else {
+        outputs = (
+          <span>My hobby is playing video games and watching movies.</span>
+        );
       }
       const newCommand = {
         input: cmd,

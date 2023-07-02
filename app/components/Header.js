@@ -31,12 +31,16 @@ const Header = () => {
       if (headerElement) {
         headerElement.classList.remove("opacity-[0]");
         headerElement.classList.add("opacity-[100%]");
+        headerElement.classList.remove("z-[-1]");
+        headerElement.classList.add("z-[80]");
       }
     } else {
       const headerElement = document.getElementById("header");
       if (headerElement) {
         headerElement.classList.remove("opacity-[100%]");
         headerElement.classList.add("opacity-[0]");
+        headerElement.classList.remove("z-[80]");
+        headerElement.classList.add("z-[-1]");
       }
     }
   }, [showHeader]);
