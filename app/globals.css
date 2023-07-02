@@ -58,6 +58,23 @@ header{
   animation: zoom 10s infinite alternate;
 }
 
+.contact::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  opacity: 0.3;
+  background-image: url('/assets/images/contact_bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  animation: zoom 10s infinite alternate;
+}
+
 @keyframes zoom {
   0% {
     transform: translate(-50%, -50%) scale(1);
