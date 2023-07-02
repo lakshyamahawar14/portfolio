@@ -8,8 +8,8 @@ const About = () => {
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%] image-loaded">
           <Image
             src="/assets/images/joker_pfp.jpg"
-            width={200}
-            height={200}
+            width={300}
+            height={300}
             key={Math.random}
             className="relative w-[80%] h-[auto]"
             alt="Picture picture of Author"

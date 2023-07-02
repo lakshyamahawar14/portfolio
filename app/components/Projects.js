@@ -8,10 +8,10 @@ const Projects = () => {
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%] image-loaded">
           <Image
             src="/assets/images/chatbot_pfp.png"
-            width={300}
-            height={600}
+            width={400}
+            height={800}
             key={Math.random}
-            className="relative w-[auto] h-[80%] sm:w-[90%] sm:h-[auto]"
+            className="relative w-[60%] h-[75%] sm:w-[90%] sm:h-[auto]"
             alt="A picture of Lux Chatbot"
             priority={true}
           />

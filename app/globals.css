@@ -41,7 +41,7 @@ header{
   transform: rotate(-90deg);
 }
 
-.terminal::before {
+.terminal::before, .fakehome::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -80,7 +80,7 @@ header{
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.terminal{
+.terminal, .fakehome{
   overflow-y: hidden;
 }
 
@@ -168,7 +168,7 @@ header{
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, -50%) scale(0.9);
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
