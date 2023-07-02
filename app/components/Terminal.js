@@ -155,7 +155,8 @@ const Terminal = () => {
     setTimeout(() => {
       const terminalElement = document.getElementById("overlay");
       if (terminalElement) {
-        terminalElement.classList.add("minimize");
+        terminalElement.classList.add("destroy");
+        console.log(terminalElement.classList);
       }
       setRemoveFocus(true);
     }, time);
@@ -403,14 +404,7 @@ const Terminal = () => {
         setShowHeader(true);
         const newCommand = {
           input: cmd,
-          output: (
-            <span>
-              Header enabled successfully. <br />
-              If you want to explore using cli, close this terminal now, or
-              clear cookies of this website, or open it in Incognito tab.
-              <br /> Auto-destroying Terminal in 5s...
-            </span>
-          ),
+          output: <span>Header enabled successfully.</span>,
           terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);

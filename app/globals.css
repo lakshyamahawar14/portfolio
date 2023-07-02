@@ -55,7 +55,7 @@ header{
   background-size: cover;
   background-position: center;
   z-index: 0;
-  animation: zoom 10s infinite alternate;
+  animation: zoomIn 10s infinite alternate;
 }
 
 .contact::before {
@@ -72,7 +72,7 @@ header{
   background-size: cover;
   background-position: center;
   z-index: 0;
-  animation: zoom 10s infinite alternate;
+  animation: zoomIn 10s infinite alternate;
 }
 
 
@@ -84,11 +84,11 @@ header{
   overflow-y: hidden;
 }
 
-.personal{
+.about{
   overflow-y: hidden;
 }
 
-.personal::before {
+.about::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -103,10 +103,35 @@ header{
   z-index: 0;
   /* animation: zoomAndSlideShow 18s infinite alternate; */
   background-image: url('/assets/images/batman_bg.jpg');
-  animation: zoom 18s infinite alternate;
+  animation: zoomOut 18s infinite alternate;
 }
 
-/* 
+.projects, .mazeai{
+  overflow-y: hidden;
+}
+
+.projects::before, .mazeai::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  background-image: url('/assets/images/luxhealth_bg.jpg');
+  animation: zoomOut 10s infinite alternate;
+}
+
+.mazeai::before{
+  background-image: url('/assets/images/mazeai_bg.jpg');
+}
+
+
 @keyframes zoomAndSlideShow {
   0%, 100% {
     background-image: url('/assets/images/batman_bg.jpg');
@@ -120,14 +145,26 @@ header{
     background-image: url('/assets/images/justcause3_bg.jpg');
     transform: translate(-50%, -50%) scale(0.9);
   }
-} */
+}
 
-@keyframes zoom {
+@keyframes zoomIn {
   0% {
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
     transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9);
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
@@ -157,10 +194,11 @@ header{
   width: 100%;
 }
 
-.minimize{
+.destroy{
   transition: all ease-out 0.1s;
   height: 0;
   width: 0;
+  display: none;
 }
 
 .button-transition{

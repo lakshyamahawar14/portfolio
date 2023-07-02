@@ -13,7 +13,7 @@ const Header = () => {
         if (burger) {
           burger.classList.add("rotated");
         }
-        menu.style.height = "50vh";
+        menu.style.height = "30vh";
       } else {
         if (burger) {
           burger.classList.remove("rotated");
@@ -25,20 +25,20 @@ const Header = () => {
 
   return (
     <>
-      <header className="header h-[10vh] flex justify-between py-[3vh] px-[6vw] relative w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[10vh] shadow-2xl bg-[#101010]">
-        <div className="logoContainer z-[30] flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[10vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw]">
-          <p className="logo text-[#9FEF00] font-[800]">Lakshya</p>
+      <header className="header h-[2rem] flex justify-between px-[6vw] fixed w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[5vh] shadow-2xl bg-[#101010]">
+        <div className="logoContainer z-[30] flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[5vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw]">
+          <p className="logo text-[#9FEF00] text-[1rem] font-[700]">Lakshya</p>
         </div>
 
         <div
           id="burger"
           onClick={handleMenu}
-          className="burger z-[90] h-[10vh] text-[1.5rem] cursor-pointer transition-all ease-linear delay-0 sm:flex justify-center items-center absolute top-0 right-0 px-[6vw] hidden"
+          className="burger z-[90] h-[5vh] text-[1rem] cursor-pointer transition-all ease-linear delay-0 sm:flex justify-center items-center absolute top-0 right-0 px-[6vw] hidden"
         >
-          <span className="flex text-[#9FEF00] flex-col justify-evenly items-center h-[35%] w-[20px]">
-            <span className="h-[2px] bg-[#9FEF00] w-[100%]" />
-            <span className="h-[2px] bg-[#9FEF00] w-[100%]" />
-            <span className="h-[2px] bg-[#9FEF00] w-[100%]" />
+          <span className="flex text-[#9FEF00] flex-col justify-evenly items-center h-[40%] w-[15px]">
+            <span className="h-[1px] bg-[#9FEF00] w-[100%]" />
+            <span className="h-[1px] bg-[#9FEF00] w-[100%]" />
+            <span className="h-[1px] bg-[#9FEF00] w-[100%]" />
           </span>
         </div>
 
