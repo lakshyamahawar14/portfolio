@@ -106,11 +106,11 @@ header{
   animation: zoomOut 18s infinite alternate;
 }
 
-.projects, .mazeai{
+.projects, .mazeai, .skills{
   overflow-y: hidden;
 }
 
-.projects::before, .mazeai::before {
+.projects::before, .mazeai::before, .skills::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -129,6 +129,10 @@ header{
 
 .mazeai::before{
   background-image: url('/assets/images/mazeai_bg.jpg');
+}
+
+.skills::before{
+  background-image: url('/assets/images/notfound_bg.jpg');
 }
 
 

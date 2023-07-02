@@ -27,7 +27,9 @@ const Projects = () => {
             It&apos;s a chatbot integrated in a website specially designed to
             provide{" "}
             <span className="text-[#fcfcfc]">mental health support</span> to
-            Individuals.
+            Individuals. This website is made with{" "}
+            <span className="text-[#fcfcfc]">ReactJS</span>. User can give
+            Cognitive assessment tests and get personalized support materials.
           </p>
         </div>
       </section>
@@ -38,9 +40,11 @@ const Projects = () => {
             MazeAI
           </p>
           <p className="text-[1.3rem] py-[2rem] md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
-            It&apos;s a Maze puzzle game project in which user can generate maze
-            of any size and desired difficulty and play the game to solve that.
-            The original project code is made in{" "}
+            It&apos;s a <span className="text-[#fcfcfc]">Maze</span> puzzle game
+            project in which user can generate maze of any size and desired
+            difficulty and play the game to solve that. Machine learning is also
+            used in the project to determine the difficulty of the maze based on
+            many parameters. The original project code is made in{" "}
             <span className="text-[#fcfcfc]">Python</span>, this is just a
             ReactJS implementation of that project.
           </p>
