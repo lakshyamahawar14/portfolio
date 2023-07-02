@@ -1,9 +1,34 @@
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { routes } from "../states/paths";
+import { useRecoilState } from "recoil";
+import { useEffect } from "react";
+import { showHeaderAtom } from "../states/atoms";
 
 const Header = () => {
   const pathname = usePathname();
+  const [showHeader, setShowHeader] = useRecoilState(showHeaderAtom);
+
+  useEffect(() => {
+    if (!showHeader) {
+      if (typeof window !== "undefined") {
+        const headerStatus = localStorage.getItem("ShowHeader") === "true";
+        if (headerStatus) {
+          setShowHeader(true);
+          const headerElement = document.getElementById("header");
+          if (headerElement) {
+            headerElement.classList.add("opacity-[100%]");
+          }
+        }
+      }
+    } else {
+      const headerElement = document.getElementById("header");
+      if (headerElement) {
+        headerElement.classList.add("opacity-[100%]");
+      }
+    }
+  }, []);
 
   const handleMenu = () => {
     const burger = document.getElementById("burger");
@@ -25,7 +50,10 @@ const Header = () => {
 
   return (
     <>
-      <header className="header h-[2rem] flex justify-between px-[6vw] fixed w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[5vh] shadow-2xl bg-[#101010]">
+      <header
+        id="header"
+        className="header transition-all ease-linear delay-0 h-[2rem] flex justify-between px-[6vw] fixed w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[5vh] shadow-2xl bg-[#101010] opacity-0"
+      >
         <div className="logoContainer z-[30] flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[5vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw]">
           <p className="logo text-[#9FEF00] text-[1rem] font-[700]">Lakshya</p>
         </div>

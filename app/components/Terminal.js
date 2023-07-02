@@ -156,7 +156,6 @@ const Terminal = () => {
       const terminalElement = document.getElementById("overlay");
       if (terminalElement) {
         terminalElement.classList.add("destroy");
-        console.log(terminalElement.classList);
       }
       setRemoveFocus(true);
     }, time);
@@ -530,70 +529,68 @@ const Terminal = () => {
 
   return (
     <>
-      <div className="terminalContainer relative flex h-[auto] w-[auto] m-auto justify-center items-center">
-        <section className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
-          <div
-            id="overlay"
-            className="terminal-overlay relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] transition-all ease-out delay-0 image-loaded"
-          >
-            <div className="terminalheader absolute w-[100%] top-[auto] left-[auto] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-auto bg-[#101010]">
-              <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
-                <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
-                <div
-                  className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44] cursor-pointer hover:bg-[#077607]"
-                  onClick={() => {
-                    maximizeTerminal();
-                  }}
-                ></div>
-                <div
-                  className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer hover:bg-[#a41b1b]"
-                  onClick={() => {
-                    setCommands([]);
+      <section className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
+        <div
+          id="overlay"
+          className="terminal-overlay relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] transition-all ease-out delay-0 image-loaded"
+        >
+          <div className="terminalheader absolute w-[100%] top-[auto] left-[auto] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-auto bg-[#101010]">
+            <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
+              <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
+              <div
+                className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#44da44] cursor-pointer hover:bg-[#077607]"
+                onClick={() => {
+                  maximizeTerminal();
+                }}
+              ></div>
+              <div
+                className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer hover:bg-[#a41b1b]"
+                onClick={() => {
+                  setCommands([]);
 
-                    if (typeof window !== "undefined") {
-                      localStorage.setItem("ShowHeader", "false");
-                    }
-                    setShowHeader(false);
-                    setRemoveFocus(false);
-                  }}
-                ></div>
-              </div>
-            </div>
-            <div className="relative rounded-xl m-auto h-[100%] w-[100%] overflow-y-scroll">
-              <div className="commandsContainer h-[auto] bg-transparent pt-[5vh]">
-                {commands.map((command, index) => (
-                  <React.Fragment key={index}>
-                    <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
-                      {command.terminalLabel}{" "}
-                      <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
-                        {command.input}
-                      </span>
-                    </p>
-                    <p className="output text-[#FFFFFF] flex text-[1rem] px-[1rem] oppacity-[0.8] w-[100%] h-[auto] m-auto bg-transparent sm:text-[0.8rem]">
-                      {command.output}
-                    </p>
-                  </React.Fragment>
-                ))}
-                <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
-                  {terminalLabel}{" "}
-                  <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent] sm:text-[0.8rem]">
-                    <input
-                      type="text"
-                      className="bg-transparent outline-none w-[100%] caret-[#9FEF00] text-[#FFFFFF]"
-                      ref={inputRef}
-                      onBlur={handleInputBlur}
-                      onKeyDown={handleEnter}
-                      onChange={handleInputChange}
-                      spellCheck={false}
-                      value={currentCommand}
-                    ></input>
-                  </span>
-                </p>
-              </div>
+                  if (typeof window !== "undefined") {
+                    localStorage.setItem("ShowHeader", "false");
+                  }
+                  setShowHeader(false);
+                  setRemoveFocus(false);
+                }}
+              ></div>
             </div>
           </div>
-        </section>
-      </div>
+          <div className="relative rounded-xl m-auto h-[100%] w-[100%] overflow-y-scroll">
+            <div className="commandsContainer h-[auto] bg-transparent pt-[5vh]">
+              {commands.map((command, index) => (
+                <React.Fragment key={index}>
+                  <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
+                    {command.terminalLabel}{" "}
+                    <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
+                      {command.input}
+                    </span>
+                  </p>
+                  <p className="output text-[#FFFFFF] flex text-[1rem] px-[1rem] oppacity-[0.8] w-[100%] h-[auto] m-auto bg-transparent sm:text-[0.8rem]">
+                    {command.output}
+                  </p>
+                </React.Fragment>
+              ))}
+              <p className="command text-[#9FEF00] flex text-[1rem] px-[1rem] py-[1rem] w-[100%] m-auto bg-transparent sm:text-[0.8rem]">
+                {terminalLabel}{" "}
+                <span className="text-[1rem] px-[1vw] w-[100%] m-auto bg-[transparent] sm:text-[0.8rem]">
+                  <input
+                    type="text"
+                    className="bg-transparent outline-none w-[100%] caret-[#9FEF00] text-[#FFFFFF]"
+                    ref={inputRef}
+                    onBlur={handleInputBlur}
+                    onKeyDown={handleEnter}
+                    onChange={handleInputChange}
+                    spellCheck={false}
+                    value={currentCommand}
+                  ></input>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
