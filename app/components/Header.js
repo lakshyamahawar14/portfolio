@@ -22,13 +22,24 @@ const Header = () => {
           }
         }
       }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (showHeader) {
+      const headerElement = document.getElementById("header");
+      if (headerElement) {
+        headerElement.classList.remove("opacity-[0]");
+        headerElement.classList.add("opacity-[100%]");
+      }
     } else {
       const headerElement = document.getElementById("header");
       if (headerElement) {
-        headerElement.classList.add("opacity-[100%]");
+        headerElement.classList.remove("opacity-[100%]");
+        headerElement.classList.add("opacity-[0]");
       }
     }
-  }, []);
+  }, [showHeader]);
 
   const handleMenu = () => {
     const burger = document.getElementById("burger");

@@ -120,8 +120,9 @@ const Terminal = () => {
           <span>
             <span className="text-[#ca1111]">WARNING: Header is enabled.</span>
             <br />
-            If you want to explore using cli, close this terminal now, or clear
-            cookies of this website, or open it in Incognito tab.
+            If you want to explore using cli, close this terminal now and
+            refresh the page, or clear cookies of this website, or open it in
+            Incognito tab.
             <br /> Auto-destroying Terminal in 3s...
           </span>
         ),
