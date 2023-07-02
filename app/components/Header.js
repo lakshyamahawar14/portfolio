@@ -18,7 +18,10 @@ const Header = () => {
           setShowHeader(true);
           const headerElement = document.getElementById("header");
           if (headerElement) {
+            headerElement.classList.remove("opacity-[0]");
             headerElement.classList.add("opacity-[100%]");
+            headerElement.classList.remove("z-[-1]");
+            headerElement.classList.add("z-[80]");
           }
         }
       }
@@ -67,7 +70,7 @@ const Header = () => {
     <>
       <header
         id="header"
-        className="header transition-all ease-linear delay-0 h-[2rem] flex justify-between px-[6vw] fixed w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[5vh] shadow-2xl bg-[#101010] opacity-0"
+        className="header transition-all ease-linear delay-0 h-[2rem] flex justify-between px-[6vw] fixed w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[5vh] shadow-2xl bg-[#101010] opacity-[0] z-[-1]"
       >
         <div className="logoContainer z-[30] flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[5vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw]">
           <p className="logo text-[#9FEF00] text-[1rem] font-[700]">Lakshya</p>

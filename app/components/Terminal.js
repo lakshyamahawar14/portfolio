@@ -174,6 +174,13 @@ const Terminal = () => {
       inputRef.current.disabled = true;
     }
     setTimeout(() => {
+      if (showHeader && !removeFocus && commands.length === 0) {
+        if (inputRef.current.disabled !== undefined) {
+          inputRef.current.disabled = false;
+          inputRef.current.focus();
+        }
+        return;
+      }
       const terminalElement = document.getElementById("overlay");
       if (terminalElement) {
         terminalElement.classList.add("destroy");
