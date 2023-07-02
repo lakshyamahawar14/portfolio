@@ -122,13 +122,13 @@ const Terminal = () => {
             <br />
             If you want to explore using cli, close this terminal now, or clear
             cookies of this website, or open it in Incognito tab.
-            <br /> Auto-destroying Terminal in 5s...
+            <br /> Auto-destroying Terminal in 3s...
           </span>
         ),
         terminalLabel: terminalLabel,
       };
       setCommands((prevCommands) => [...prevCommands, newCommand]);
-      destroyTerminal();
+      destroyTerminal(3000);
     }
   }, [showHeader]);
 
@@ -148,14 +148,17 @@ const Terminal = () => {
     }, 100);
   };
 
-  const destroyTerminal = () => {
+  const destroyTerminal = (time) => {
+    if (inputRef.current.disabled !== undefined) {
+      inputRef.current.disabled = true;
+    }
     setTimeout(() => {
       const terminalElement = document.getElementById("overlay");
       if (terminalElement) {
         terminalElement.classList.add("minimize");
       }
       setRemoveFocus(true);
-    }, 5000);
+    }, time);
   };
 
   useEffect(() => {
