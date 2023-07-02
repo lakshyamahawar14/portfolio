@@ -18,6 +18,7 @@ const Terminal = () => {
   const [isRootUser, setIsRootUser] = useRecoilState(isRootUserAtom);
   const [removeFocus, setRemoveFocus] = useState(false);
   const [showHeader, setShowHeader] = useRecoilState(showHeaderAtom);
+  const revokeTerminal = useRef(false);
   const inputRef = useRef(null);
 
   const directoryMap = {
@@ -173,19 +174,21 @@ const Terminal = () => {
     if (inputRef.current.disabled !== undefined) {
       inputRef.current.disabled = true;
     }
+
     setTimeout(() => {
-      if (showHeader && !removeFocus && commands.length === 0) {
+      if (revokeTerminal.current && commands.length === 0) {
         if (inputRef.current.disabled !== undefined) {
           inputRef.current.disabled = false;
           inputRef.current.focus();
         }
         return;
+      } else {
+        const terminalElement = document.getElementById("overlay");
+        if (terminalElement) {
+          terminalElement.classList.add("destroy");
+        }
+        setRemoveFocus(true);
       }
-      const terminalElement = document.getElementById("overlay");
-      if (terminalElement) {
-        terminalElement.classList.add("destroy");
-      }
-      setRemoveFocus(true);
     }, time);
   };
 
@@ -666,6 +669,7 @@ const Terminal = () => {
                 className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ca1111] cursor-pointer hover:bg-[#a41b1b]"
                 onClick={() => {
                   setCommands([]);
+                  revokeTerminal.current = true;
 
                   if (typeof window !== "undefined") {
                     localStorage.setItem("ShowHeader", "false");
