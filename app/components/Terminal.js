@@ -114,9 +114,23 @@ const Terminal = () => {
   useEffect(() => {
     inputRef.current.focus();
     if (showHeader) {
-      setRemoveFocus(true);
+      const newCommand = {
+        input: "",
+        output: (
+          <span>
+            <span className="text-[#ca1111]">WARNING: Header is enabled.</span>
+            <br />
+            If you want to explore using cli, close this terminal now, or clear
+            cookies of this website, or open it in Incognito tab.
+            <br /> Auto-destroying Terminal in 5s...
+          </span>
+        ),
+        terminalLabel: terminalLabel,
+      };
+      setCommands((prevCommands) => [...prevCommands, newCommand]);
+      destroyTerminal();
     }
-  }, []);
+  }, [showHeader]);
 
   const handleInputBlur = () => {
     if (!removeFocus) {
@@ -125,14 +139,28 @@ const Terminal = () => {
   };
 
   const handleScroll = () => {
-    const commandsContainer = document.querySelector(".commandsContainer");
-    const lastCommand = commandsContainer.lastElementChild;
-    lastCommand.scrollIntoView({ behavior: "smooth", block: "end" });
+    setTimeout(() => {
+      const commandsContainer = document.querySelector(".commandsContainer");
+      if (commandsContainer) {
+        const lastCommand = commandsContainer.lastElementChild;
+        lastCommand.scrollIntoView({ behavior: "smooth", block: "end" });
+      }
+    }, 100);
+  };
+
+  const destroyTerminal = () => {
+    setTimeout(() => {
+      const terminalElement = document.getElementById("overlay");
+      if (terminalElement) {
+        terminalElement.classList.add("minimize");
+      }
+      setRemoveFocus(true);
+    }, 5000);
   };
 
   useEffect(() => {
     handleScroll();
-  }, [commands, inputRef.current?.value]);
+  }, [commands]);
 
   const handleShowProfilePic = (event) => {
     const pfpElement = event.target;
@@ -370,10 +398,16 @@ const Terminal = () => {
           localStorage.setItem("ShowHeader", "true");
         }
         setShowHeader(true);
-        setRemoveFocus(true);
         const newCommand = {
           input: cmd,
-          output: `Header enabled successfully`,
+          output: (
+            <span>
+              Header enabled successfully. <br />
+              If you want to explore using cli, close this terminal now, or
+              clear cookies of this website, or open it in Incognito tab.
+              <br /> Auto-destroying Terminal in 5s...
+            </span>
+          ),
           terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);

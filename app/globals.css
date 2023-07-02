@@ -153,6 +153,12 @@ header{
   width: 100%;
 }
 
+.minimize{
+  transition: all ease-out 0.1s;
+  height: 0;
+  width: 0;
+}
+
 .button-transition{
   transition: 0.2s;
 }
