@@ -193,7 +193,7 @@ const Terminal = () => {
       let result = (
         <span className="flex flex-col justify-between items-start w-[auto] h-[auto] min-h[300px]">
           <Image
-            src="/assets/images/joker_pfp.jpg"
+            src="/assets/images/joker_dp.jpg"
             width={300}
             height={300}
             key={Math.random}
