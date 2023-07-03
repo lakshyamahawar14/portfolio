@@ -4,7 +4,7 @@ import Header from "../components/Header";
 const AboutPage = () => {
   return (
     <div>
-      <Header />
+      <Header color={"#134c4d"} />
       <About />
     </div>
   );

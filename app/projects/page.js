@@ -4,7 +4,7 @@ import Header from "../components/Header";
 const ProjectsPage = () => {
   return (
     <div>
-      <Header />
+      <Header color={"#111649"} />
       <Projects />
     </div>
   );

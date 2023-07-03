@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=IBM+Plex+Sans&family=Ubuntu:wght@500&display=swap');
 
 *{
   margin: 0;
@@ -18,7 +21,7 @@
 }
 
 body{
-  background-color: #101010;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar {
@@ -29,111 +32,9 @@ body{
   border-radius: 2px;
 }
 
-.terminalheader{
-  z-index: 10;
-}
-
-header{
-  z-index: 60;
-}
-
 .rotated{
   transform: rotate(-90deg);
 }
-
-.terminal::before, .fakehome::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
-  opacity: 1;
-  background-image: url('/assets/images/kali_bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  animation: zoomIn 10s infinite alternate;
-}
-
-.contact::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
-  opacity: 0.3;
-  background-image: url('/assets/images/contact_bg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  animation: zoomOut 10s infinite alternate;
-}
-
-
-.terminal-overlay{
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.terminal, .fakehome{
-  overflow-y: hidden;
-}
-
-.about{
-  overflow-y: hidden;
-}
-
-.about::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
-  opacity: 0.2;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  background-image: url('/assets/images/about_bg.jpg');
-  animation: zoomIn 10s infinite alternate;
-}
-
-.projects, .mazeai, .skills{
-  overflow-y: hidden;
-}
-
-.projects::before, .mazeai::before, .skills::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
-  opacity: 0.1;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  background-image: url('/assets/images/project_bg.jpg');
-  animation: zoomOut 10s infinite alternate;
-}
-
-.mazeai::before{
-  background-image: url('/assets/images/project2_bg.jpg');
-}
-
-.skills::before{
-  background-image: url('/assets/images/notfound_bg.jpg');
-}
-
 
 @keyframes zoomAndSlideShow {
   0%, 100% {
@@ -174,10 +75,6 @@ header{
   }
 }
 
-.image-loaded{
-  animation: scaleImage 0.5s ease-in-out;
-}
-
 @keyframes scaleImage {
   0% {
     transform: scale(0);
@@ -185,6 +82,11 @@ header{
   100% {
     transform: scale(1);
   }
+}
+
+
+.image-loaded{
+  animation: scaleImage 0.5s ease-in-out;
 }
 
 .maximize{
@@ -197,9 +99,25 @@ header{
   transition: all ease-out 0.1s;
   height: 0;
   width: 0;
-  display: none;
 }
 
 .button-transition{
   transition: 0.2s;
+}
+
+.glass{
+  background-color: rgba(#000000, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.rubik{
+  font-family: 'Rubik', sans-serif;
+}
+
+.ubuntu{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.plex{
+  font-family: 'IBM Plex Sans', sans-serif;
 }

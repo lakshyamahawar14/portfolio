@@ -650,12 +650,12 @@ const Terminal = () => {
 
   return (
     <>
-      <section className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
+      <section className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh] bg-[#87a2d8]">
         <div
           id="overlay"
-          className="terminal-overlay relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] transition-all ease-out delay-0 image-loaded"
+          className="terminal-overlay rounded-xl relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] transition-all ease-out delay-0 image-loaded bg-[#000000]"
         >
-          <div className="terminalheader absolute w-[100%] top-[auto] left-[auto] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-auto bg-[#101010]">
+          <div className="terminalheader absolute w-[100%] top-[auto] left-[auto] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-auto bg-[#1a1a1a] z-[100]">
             <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
               <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
               <div

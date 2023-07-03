@@ -4,7 +4,7 @@ import Home from "../components/Home";
 const FakeHomePage = () => {
   return (
     <div>
-      <Header />
+      <Header color={"#482c0c"} />
       <Home />
     </div>
   );
