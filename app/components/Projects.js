@@ -46,7 +46,8 @@ const Projects = () => {
             used in the project to determine the difficulty of the maze based on
             many parameters. The original project code is made in{" "}
             <span className="text-[#100f48]">Python</span>, this is just a
-            ReactJS implementation of that project.
+            <span className="text-[#100f48]"> ReactJS</span> implementation of
+            that project.
           </p>
         </div>
         <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%]">
