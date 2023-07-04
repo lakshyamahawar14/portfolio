@@ -47,16 +47,16 @@ const Skills = () => {
 
   return (
     <>
-      <section className="frameworks flex flex-col m-auto justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#e9c1de]">
-        <div className="h-[15vh] py-[2rem] flex justify-center w-[100%]">
+      <section className="section relative flex flex-col justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#e9c1de]">
+        <div className="py-[2rem] flex justify-center w-[100%]">
           <h1 className="rubik font-[800] text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Frameworks and Domains
           </h1>
         </div>
-        <div className="cardContainer h-auto flex">
+        <div className="cardContainer flex flex-wrap">
           {frameworks.map((framework, index) => (
             <div
-              className="card rounded bg-[#e8dde7] flex flex-col justify-between"
+              className="card rounded bg-[#e8dde7] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
               <h2 className="rubik font-[800] text-[#5d1048] text-center">
@@ -70,19 +70,19 @@ const Skills = () => {
         </div>
       </section>
 
-      <section className="frameworks relative flex flex-col justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#eaffa0]">
-        <div className="h-[15vh] py-[2rem] flex justify-center w-[100%]">
-          <h1 className="rubik font-[800] text-[#5b710e] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
+      <section className="section relative flex flex-col justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#eaffa0]">
+        <div className="py-[2rem] flex justify-center w-[100%]">
+          <h1 className="rubik font-[800] text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Programming Languages
           </h1>
         </div>
-        <div className="cardContainer">
+        <div className="cardContainer flex flex-wrap">
           {languages.map((language, index) => (
             <div
-              className="card rounded bg-[#e2e8ca] flex flex-col justify-between"
+              className="card rounded bg-[#e2e8ca] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
-              <h2 className="rubik font-[800] text-[#5b710e] text-center">
+              <h2 className="rubik font-[800] text-[#5d1048] text-center">
                 {language.name}
               </h2>
               <p className="plex font-[700] text-start text-[#51b52d]">
@@ -93,23 +93,23 @@ const Skills = () => {
         </div>
       </section>
 
-      <section className="frameworks relative flex flex-col justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#cbadfc]">
-        <div className="h-[15vh] py-[2rem] flex justify-center w-[100%]">
-          <h1 className="rubik font-[800] text-[#2b1154] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
-            Programming Languages
+      <section className="section relative flex flex-col justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#cbadfc]">
+        <div className="py-[2rem] flex justify-center w-[100%]">
+          <h1 className="rubik font-[800] text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
+            Databases
           </h1>
         </div>
-        <div className="cardContainer">
-          {languages.map((language, index) => (
+        <div className="cardContainer flex flex-wrap">
+          {databases.map((database, index) => (
             <div
-              className="card rounded bg-[#d7cddd] flex flex-col justify-between"
+              className="card rounded bg-[#d7cddd] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
-              <h2 className="rubik font-[800] text-[#2b1154] text-center">
-                {language.name}
+              <h2 className="rubik font-[800] text-[#5d1048] text-center">
+                {database.name}
               </h2>
               <p className="plex font-[700] text-start text-[#b040d6]">
-                {language.description}
+                {database.description}
               </p>
             </div>
           ))}

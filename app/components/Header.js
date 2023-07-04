@@ -6,7 +6,9 @@ const Header = (props) => {
     <>
       <header
         id="header"
-        className="header fixed transition-all ease-linear delay-0 h-[8vh] flex justify-center px-[6vw] w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[8vh] shadow-xl glass z-[100]"
+        className={`header sticky transition-all ease-linear delay-0 h-[8vh] flex justify-center px-[6vw] w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[8vh] glass bg-[${
+          props.bg || "#2a8423"
+        }] z-[100]`}
       >
         <div
           id="linksContainer"
@@ -24,7 +26,7 @@ const Header = (props) => {
           <div className={`m-auto link`}>
             <Link
               href={routes.aboutPath}
-              className="text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
+              className="ubuntu tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
             >
               About Me
             </Link>
@@ -32,7 +34,7 @@ const Header = (props) => {
           <div className={`m-auto link`}>
             <Link
               href={routes.projectsPath}
-              className="text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
+              className="ubuntu tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
             >
               Projects
             </Link>
@@ -40,7 +42,7 @@ const Header = (props) => {
           <div className={`m-auto link`}>
             <Link
               href={routes.skillsPath}
-              className="text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
+              className="ubuntu tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
             >
               Skills
             </Link>
@@ -48,7 +50,7 @@ const Header = (props) => {
           <div className={`m-auto link`}>
             <Link
               href={routes.contactPath}
-              className="text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
+              className="ubuntu tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
             >
               Contact Me
             </Link>

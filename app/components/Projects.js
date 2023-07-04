@@ -4,7 +4,7 @@ import Image from "next/image";
 const Projects = () => {
   return (
     <>
-      <section className="projects pt-[8vh] luxhealth relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#5dc6ea]">
+      <section className="projects py-[8vh] luxhealth relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#5dc6ea]">
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
           <Image
             src="/assets/images/chatbot_pfp.png"
@@ -34,7 +34,7 @@ const Projects = () => {
         </div>
       </section>
 
-      <section className="projects mazeai relative flex justify-center items-center pt-[8vh] h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#76eb84]">
+      <section className="projects mazeai relative flex justify-center items-center py-[8vh] h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#76eb84]">
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
           <p className="text-[2.5rem] text-[#125413] tracking-wider font-[900] text-start md:text-[2rem] sm:text-[1.5rem] rubik">
             MazeAI

@@ -5,7 +5,7 @@ const SkillsPage = () => {
   return (
     <>
       <div>
-        <Header color={"#5d1048"} />
+        <Header color="#5d1048" bg="#e9c1de" />
         <Skills />
       </div>
     </>
