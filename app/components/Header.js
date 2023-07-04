@@ -6,7 +6,7 @@ const Header = (props) => {
     <>
       <header
         id="header"
-        className="header absolute transition-all ease-linear delay-0 h-[8vh] flex justify-center px-[6vw] w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[8vh] shadow-xl glass z-[100]"
+        className="header fixed transition-all ease-linear delay-0 h-[8vh] flex justify-center px-[6vw] w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[8vh] shadow-xl glass z-[100]"
       >
         <div
           id="linksContainer"
@@ -20,22 +20,6 @@ const Header = (props) => {
             >
               Lakshya
             </p>
-          </div>
-          <div className={`m-auto link`}>
-            <Link
-              href={routes.homePath}
-              className="text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
-            >
-              Terminal
-            </Link>
-          </div>
-          <div className={`m-auto link`}>
-            <Link
-              href={routes.fakeHomePath}
-              className="text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem] font-[700]"
-            >
-              Home
-            </Link>
           </div>
           <div className={`m-auto link`}>
             <Link

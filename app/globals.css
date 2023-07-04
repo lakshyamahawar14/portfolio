@@ -16,7 +16,6 @@
   font-family: 'Source Code Pro', monospace;
   user-select: none;
   overflow-x: hidden;
-  max-height: 100vh;
   max-width: 100vw;
 }
 
@@ -120,4 +119,15 @@ body{
 
 .plex{
   font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  min-height: 25vh
 }

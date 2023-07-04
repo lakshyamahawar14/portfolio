@@ -15,7 +15,7 @@ const About = () => {
             alt="Picture picture of Author"
             priority={true}
           />
-          <p className="text-[1rem] tracking-wide ubuntu text-[#134c4d] font-[700] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
+          <p className="text-[1rem] pl-[10px] tracking-wide ubuntu text-[#134c4d] font-[700] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
             Pic - Admin (Me)
           </p>
         </div>

@@ -182,7 +182,7 @@ const Terminal = () => {
 
   useEffect(() => {
     if (isRedirect) {
-      redirect(routes.fakeHomePath);
+      redirect(routes.aboutPath);
       return () => {};
     }
   }, [isRedirect]);

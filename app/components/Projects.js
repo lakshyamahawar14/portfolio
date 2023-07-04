@@ -15,7 +15,7 @@ const Projects = () => {
             alt="A picture of Lux Chatbot"
             priority={true}
           />
-          <p className="text-[1rem] ubuntu text-[#111649] font-[700] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
+          <p className="text-[1rem] pl-[10px] ubuntu text-[#111649] font-[700] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
             A screenshot of Lux Chatbot
           </p>
         </div>
@@ -60,7 +60,7 @@ const Projects = () => {
             alt="A 15x15 Generated Maze"
             priority={true}
           />
-          <p className="text-[1rem] ubuntu text-[#125413] font-[700] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
+          <p className="text-[1rem] pl-[10px] ubuntu text-[#125413] font-[700] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
             A generated 15x15 maze
           </p>
         </div>
