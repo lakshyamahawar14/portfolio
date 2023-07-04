@@ -56,7 +56,7 @@ const Skills = () => {
         <div className="cardContainer flex flex-wrap">
           {frameworks.map((framework, index) => (
             <div
-              className="card rounded bg-[#e8dde7] flex flex-col justify-between mb-4 mx-2"
+              className="card rounded bg-[#ffffff] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
               <h2 className="rubik font-[800] text-[#5d1048] text-center">
@@ -79,7 +79,7 @@ const Skills = () => {
         <div className="cardContainer flex flex-wrap">
           {languages.map((language, index) => (
             <div
-              className="card rounded bg-[#e2e8ca] flex flex-col justify-between mb-4 mx-2"
+              className="card rounded bg-[#ffffff] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
               <h2 className="rubik font-[800] text-[#5d1048] text-center">
@@ -102,7 +102,7 @@ const Skills = () => {
         <div className="cardContainer flex flex-wrap">
           {databases.map((database, index) => (
             <div
-              className="card rounded bg-[#d7cddd] flex flex-col justify-between mb-4 mx-2"
+              className="card rounded bg-[#ffffff] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
               <h2 className="rubik font-[800] text-[#5d1048] text-center">

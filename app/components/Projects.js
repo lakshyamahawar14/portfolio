@@ -56,7 +56,7 @@ const Projects = () => {
             width={300}
             height={300}
             key={Math.random}
-            className="relative w-[70%] sm:w-[80%] h-[auto]"
+            className="relative w-[70%] sm:w-[80%] h-[auto] rounded-xl"
             alt="A 15x15 Generated Maze"
             priority={true}
           />
