@@ -2,24 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=IBM+Plex+Sans&family=Ubuntu:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=IBM+Plex+Sans&family=Ubuntu:wght@500&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #A4B1CD;
   background-color: transparent;
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
   user-select: none;
   overflow-x: hidden;
   max-width: 100vw;
 }
 
-body{
+body {
   background-color: transparent;
 }
 
@@ -31,21 +30,22 @@ body{
   border-radius: 2px;
 }
 
-.rotated{
+.rotated {
   transform: rotate(-90deg);
 }
 
 @keyframes zoomAndSlideShow {
-  0%, 100% {
-    background-image: url('/assets/images/batman_bg.jpg');
+  0%,
+  100% {
+    background-image: url("/assets/images/batman_bg.jpg");
     transform: translate(-50%, -50%) scale(1);
   }
   33.33% {
-    background-image: url('/assets/images/interstellar_bg.jpg');
+    background-image: url("/assets/images/interstellar_bg.jpg");
     transform: translate(-50%, -50%) scale(1.1);
   }
   66.66% {
-    background-image: url('/assets/images/justcause3_bg.jpg');
+    background-image: url("/assets/images/justcause3_bg.jpg");
     transform: translate(-50%, -50%) scale(0.9);
   }
 }
@@ -83,42 +83,41 @@ body{
   }
 }
 
-
-.image-loaded{
+.image-loaded {
   animation: scaleImage 0.5s ease-in-out;
 }
 
-.maximize{
+.maximize {
   transition: all ease-in 0.1s;
   height: 100%;
   width: 100%;
 }
 
-.destroy{
+.destroy {
   transition: all ease-out 0.1s;
   height: 0;
   width: 0;
 }
 
-.button-transition{
+.button-transition {
   transition: 0.2s;
 }
 
-.glass{
+.glass {
   background-color: rgba(#000000, 0.8);
   backdrop-filter: blur(5px);
 }
 
-.rubik{
-  font-family: 'Rubik', sans-serif;
+.rubik {
+  font-family: "Rubik", sans-serif;
 }
 
-.ubuntu{
-  font-family: 'Ubuntu', sans-serif;
+.ubuntu {
+  font-family: "Ubuntu", sans-serif;
 }
 
-.plex{
-  font-family: 'IBM Plex Sans', sans-serif;
+.plex {
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 .cardContainer {
@@ -129,5 +128,5 @@ body{
 
 .card {
   padding: 20px;
-  min-height: 25vh
+  min-height: 25vh;
 }

@@ -17,7 +17,7 @@ const Header = (props) => {
           <div className="logoContainer z-[310] flex justify-center items-center sm:justify-between sm:w-[100%] sm:h-[8vh] sm:absolute sm:top-0 sm:left-0 sm:px-[6vw] m-auto">
             <p
               className={`logo text-[${
-                props.color || "#2a8423"
+                props.color || "#000000"
               }] text-[0.9rem] font-[700] rubik`}
             >
               Lakshya

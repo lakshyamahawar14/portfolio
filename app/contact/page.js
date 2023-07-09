@@ -4,7 +4,7 @@ import Header from "../components/Header";
 const ContactPage = () => {
   return (
     <div>
-      <Header color="#0c3134" bg="#56cae1" />
+      <Header color="#000000" bg="#56cae1" />
       <Contact />
     </div>
   );
