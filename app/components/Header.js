@@ -26,7 +26,7 @@ const Header = (props) => {
         id="header"
         className={`header absolute transition-all ease-linear delay-0 h-[8vh] flex justify-center px-[6vw] w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[8vh] glass bg-[${
           props.bg || "#2a8423"
-        }] z-[100]`}
+        }] bg-opacity-[0.65] z-[100]`}
       >
         <nav
           id="linksContainer"
@@ -55,7 +55,7 @@ const Header = (props) => {
           <div className={`m-auto link sm:pt-[8vh]`}>
             <Link
               href={routes.aboutPath}
-              className=" tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
+              className="tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
             >
               About Me
             </Link>
@@ -79,7 +79,7 @@ const Header = (props) => {
           <div className={`m-auto link`}>
             <Link
               href={routes.contactPath}
-              className=" tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
+              className="tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
             >
               Contact Me
             </Link>
