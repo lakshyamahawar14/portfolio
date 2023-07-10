@@ -38,7 +38,7 @@ const Contact = () => {
     }));
 
     axios({
-      url: "http://127.0.0.1:3000/api/mail/",
+      url: "/api/mail",
       method: "post",
       data: JSON.stringify(values),
     }).then((res) => {

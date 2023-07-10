@@ -47,3 +47,7 @@ export async function POST(req) {
     return NextResponse.json({ message: error.message });
   }
 }
+
+export async function GET(req) {
+  return NextResponse.json({ message: "get request" });
+}
