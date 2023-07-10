@@ -36,7 +36,7 @@ const Header = (props) => {
             <p
               className={`logo text-[${
                 props.color || "#000000"
-              }] text-[0.9rem] rubik`}
+              }] text-[0.9rem] `}
             >
               Lakshya
             </p>
@@ -55,7 +55,7 @@ const Header = (props) => {
           <div className={`m-auto link sm:pt-[8vh]`}>
             <Link
               href={routes.aboutPath}
-              className="ubuntu tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
+              className=" tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
             >
               About Me
             </Link>
@@ -63,7 +63,7 @@ const Header = (props) => {
           <div className={`m-auto link`}>
             <Link
               href={routes.projectsPath}
-              className="ubuntu tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
+              className=" tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
             >
               Projects
             </Link>
@@ -71,7 +71,7 @@ const Header = (props) => {
           <div className={`m-auto link`}>
             <Link
               href={routes.skillsPath}
-              className="ubuntu tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
+              className=" tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
             >
               Skills
             </Link>
@@ -79,7 +79,7 @@ const Header = (props) => {
           <div className={`m-auto link`}>
             <Link
               href={routes.contactPath}
-              className="ubuntu tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
+              className=" tracking-wider text-center hover:text-[#5b3eea] text-[#101010] text-[0.9rem]"
             >
               Contact Me
             </Link>
