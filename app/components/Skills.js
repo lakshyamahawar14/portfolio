@@ -53,14 +53,14 @@ const Skills = () => {
             Frameworks and Domains
           </h1>
         </div>
-        <div className="cardContainer flex flex-wrap px-[6vw] w-[100%]">
+        <div className="cardContainer flex flex-wrap px-[6vw] w-[100%] pb-[8vh]">
           {frameworks.map((framework, index) => (
             <div
               className="card rounded bg-[#ffffff] flex flex-col justify-between "
               key={index}
             >
               <h2 className="  text-[#5d1048] text-center">{framework.name}</h2>
-              <p className="  text-start text-[#2aabc8]">
+              <p className="  text-start text-[#ba43a2]">
                 {framework.description}
               </p>
             </div>
@@ -68,7 +68,7 @@ const Skills = () => {
         </div>
       </section>
 
-      <section className="relative flex flex-col justify-center items-center py-[8vh] min-h-[100vh] h-[auto] w-[auto] max-w-[100vw] sm:flex-col bg-[#eaffa0]">
+      <section className="relative flex flex-col justify-center items-center py-[8vh] min-h-[100vh] h-[auto] w-[auto] max-w-[100vw] sm:flex-col bg-[#c2f98b]">
         <div className="py-[2rem] flex justify-center w-[100%] px-[6vw]">
           <h1 className="  text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Programming Languages

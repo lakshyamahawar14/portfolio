@@ -44,7 +44,7 @@ const Header = (props) => {
           <div
             id="burger"
             onClick={handleMenu}
-            className="burger z-[210] h-[8vh] text-[1rem] cursor-pointer transition-all ease-linear delay-0 sm:flex justify-center items-center absolute top-0 right-0 px-[6vw] hidden"
+            className="burger z-[210] h-[8vh] text-[1rem] transition-all ease-linear delay-0 sm:flex justify-center items-center absolute top-0 right-0 px-[6vw] hidden"
           >
             <span className="flex flex-col justify-center items-center h-[40%] w-[15px]">
               <span className={`h-[1px] bg-[#000000] w-[100%] my-[2px]`} />
