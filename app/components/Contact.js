@@ -28,7 +28,8 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const contactBtnElement = document.getElementById("contactbtn");
     if (contactBtnElement) {
       contactBtnElement.innerText = "Mailing...";
@@ -175,7 +176,7 @@ const Contact = () => {
             <button
               id="contactbtn"
               type="submit"
-              onClick={handleSubmit}
+              onSubmit={handleSubmit}
               className="block w-[auto] bg-[#970bde] rounded-md ubuntu tracking-wide px-3.5 py-2.5 text-center text-sm shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-[#fcfcfc]"
             >
               {"Let's Talk"}
