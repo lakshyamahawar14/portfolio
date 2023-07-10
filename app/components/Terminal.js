@@ -1,25 +1,29 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { useRecoilState } from "recoil";
-import {
-  commandsAtom,
-  isRootUserAtom,
-  showHeaderAtom,
-  terminalLabelAtom,
-} from "../states/atoms";
+import { redirect } from "next/navigation";
+import { routes } from "../states/paths";
 
 const Terminal = () => {
   const baseVisitorUserLabel = "visitor@lakshya:";
   const baseRootUserLabel = "root@lakshya:";
-  const [terminalLabel, setTerminalLabel] = useRecoilState(terminalLabelAtom);
-  const [commands, setCommands] = useRecoilState(commandsAtom);
+  const [terminalLabel, setTerminalLabel] = useState("visitor@lakshya:/");
+  const [commands, setCommands] = useState([]);
   const [currentCommand, setCurrentCommand] = useState("");
-  const [isRootUser, setIsRootUser] = useRecoilState(isRootUserAtom);
-  const [removeFocus, setRemoveFocus] = useState(false);
-  const [showHeader, setShowHeader] = useRecoilState(showHeaderAtom);
+  const [isRootUser, setIsRootUser] = useState(false);
+  const [isRedirect, setIsRedirect] = useState(false);
   const revokeTerminal = useRef(false);
   const inputRef = useRef(null);
+
+  const noFileOrDirectory = "No such file or directory";
+  const noDirectory = "";
+  const noCommand = "<command>: command not found";
+  const noPermission = "permission denied";
+  const switchedToRoot = "";
+  const unsupportedFile = "unsupported file";
+  const invalidCode = "invalid argument";
+  const availableCommands =
+    "Available commands: ls, sudo, pwd, help, clear, cd, exit";
 
   const directoryMap = {
     "/": [
@@ -64,7 +68,7 @@ const Terminal = () => {
     ],
     "/gui/": [
       {
-        name: "enable_header.sh",
+        name: "enable_gui.sh",
         type: "file",
         protected: false,
         protection_type: "none",
@@ -134,30 +138,10 @@ const Terminal = () => {
 
   useEffect(() => {
     inputRef.current.focus();
-    if (showHeader) {
-      const newCommand = {
-        input: "",
-        output: (
-          <span>
-            <span className="text-[#ca1111]">WARNING: Header is enabled.</span>
-            <br />
-            If you want to explore using cli, close this terminal now and
-            refresh the page, or clear cookies of this website, or open it in
-            Incognito tab.
-            <br /> Auto-destroying Terminal in 3s...
-          </span>
-        ),
-        terminalLabel: terminalLabel,
-      };
-      setCommands((prevCommands) => [...prevCommands, newCommand]);
-      destroyTerminal(3000);
-    }
-  }, [showHeader]);
+  }, []);
 
   const handleInputBlur = () => {
-    if (!removeFocus) {
-      inputRef.current.focus();
-    }
+    inputRef.current.focus();
   };
 
   const handleScroll = () => {
@@ -187,7 +171,7 @@ const Terminal = () => {
         if (terminalElement) {
           terminalElement.classList.add("destroy");
         }
-        setRemoveFocus(true);
+        setIsRedirect(true);
       }
     }, time);
   };
@@ -196,13 +180,20 @@ const Terminal = () => {
     handleScroll();
   }, [commands]);
 
+  useEffect(() => {
+    if (isRedirect) {
+      redirect(routes.aboutPath);
+      return () => {};
+    }
+  }, [isRedirect]);
+
   const handleShowProfilePic = (event) => {
     const pfpElement = event.target;
     if (pfpElement.classList.contains("pfp")) {
       let result = (
         <span className="flex flex-col justify-between items-start w-[auto] h-[auto] min-h[300px]">
           <Image
-            src="/assets/images/joker_pfp.jpg"
+            src="/assets/images/heathjoker_pfp.jpg"
             width={300}
             height={300}
             key={Math.random}
@@ -225,7 +216,14 @@ const Terminal = () => {
   };
 
   const handleSubmit = (cmd) => {
-    if (cmd === "ls") {
+    if (cmd === "") {
+      const newCommand = {
+        input: cmd,
+        output: "",
+        terminalLabel: terminalLabel,
+      };
+      setCommands((prevCommands) => [...prevCommands, newCommand]);
+    } else if (cmd === "ls") {
       const currentDirectory = getCurrentDirectory();
 
       const directories = directoryMap[currentDirectory] || [];
@@ -236,7 +234,7 @@ const Terminal = () => {
           outputs.push(directory);
         });
       } else {
-        outputs.push({ error: "No directories found." });
+        outputs.push({ error: noDirectory });
       }
 
       let result = "";
@@ -301,7 +299,7 @@ const Terminal = () => {
     } else if (cmd === "help") {
       const newCommand = {
         input: cmd,
-        output: "Available commands: ls, pwd, help, clear, cd, exit",
+        output: availableCommands,
         terminalLabel: terminalLabel,
       };
       setCommands((prevCommands) => [...prevCommands, newCommand]);
@@ -314,30 +312,25 @@ const Terminal = () => {
         setTerminalLabel(`${baseRootUserLabel}${cwd}`);
         const newCommand = {
           input: cmd,
-          output: "You are now logged in as root.",
+          output: switchedToRoot,
           terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
       } else {
         const newCommand = {
           input: cmd,
-          output: "You are already logged in as root.",
+          output: switchedToRoot,
           terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
       }
     } else if (cmd === "exit") {
       setCommands([]);
-      if (typeof window !== "undefined") {
-        localStorage.setItem("ShowHeader", "false");
-      }
-      setShowHeader(false);
-      setRemoveFocus(true);
     } else if (cmd.startsWith("cd")) {
       if (cmd.length >= 3 && cmd[2] != " ") {
         const newCommand = {
           input: cmd,
-          output: "Command not found",
+          output: noCommand,
           terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
@@ -413,14 +406,15 @@ const Terminal = () => {
         } else {
           const newCommand = {
             input: cmd,
-            output:
-              "Directory not found or you don't have permission to access this directory",
+            output: isDirectoryExists(directory, currentDirectory)
+              ? noPermission
+              : noFileOrDirectory,
             terminalLabel: terminalLabel,
           };
           setCommands((prevCommands) => [...prevCommands, newCommand]);
         }
       }
-    } else if (cmd === "./enable_header.sh") {
+    } else if (cmd === "./enable_gui.sh") {
       const fileName = cmd.substring(2);
       const currentDirectory = getCurrentDirectory();
       const filePermission =
@@ -428,21 +422,24 @@ const Terminal = () => {
         !isFileProtected(fileName);
 
       if (filePermission && isFileExists(fileName, currentDirectory)) {
-        if (typeof window !== "undefined") {
-          localStorage.setItem("ShowHeader", "true");
-        }
-        setShowHeader(true);
         const newCommand = {
           input: cmd,
-          output: <span>Header enabled successfully.</span>,
+          output: (
+            <span>
+              Header enabled successfully. <br /> You will now be redirected to
+              the homepage of this website.
+            </span>
+          ),
           terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
+        destroyTerminal(3000);
       } else {
         const newCommand = {
           input: cmd,
-          output:
-            "File not found or you don't have permission to access this file",
+          output: isFileExists(fileName, currentDirectory)
+            ? noPermission
+            : noFileOrDirectory,
           terminalLabel: terminalLabel,
         };
         setCommands((prevCommands) => [...prevCommands, newCommand]);
@@ -450,7 +447,9 @@ const Terminal = () => {
     } else if (cmd.startsWith("cat")) {
       const fileName = cmd.substring(4).trim();
       const cwd = getCurrentDirectory();
-      let outputs = "Can't find the file or file isn't supported";
+      let outputs = isFileExists(fileName, cwd)
+        ? unsupportedFile
+        : noFileOrDirectory;
       if (isPathValid(cwd) && isFileExists(fileName, cwd)) {
         if (fileName === "hint_1.txt") {
           outputs = "How do you open images?";
@@ -467,9 +466,9 @@ const Terminal = () => {
     } else if (cmd.startsWith("character.jkr ")) {
       const fileName = cmd.substring(14).trim();
       const cwd = getCurrentDirectory();
-      let outputs = "Invalid code";
+      let outputs = invalidCode;
       if (!isFileExists("character.jkr", cwd)) {
-        outputs = "Can't find the file or file isn't supported";
+        outputs = noFileOrDirectory;
       } else if (
         isPathValid(cwd) &&
         (fileName === "joker" || fileName === "Joker")
@@ -491,9 +490,9 @@ const Terminal = () => {
     } else if (cmd.startsWith("movie.ilr ")) {
       const fileName = cmd.substring(10).trim();
       const cwd = getCurrentDirectory();
-      let outputs = "Invalid code";
+      let outputs = invalidCode;
       if (!isFileExists("movie.ilr", cwd)) {
-        outputs = "Can't find the file or file isn't supported";
+        outputs = noFileOrDirectory;
       } else if (
         isPathValid(cwd) &&
         (fileName === "interstellar" || fileName === "Interstellar")
@@ -514,9 +513,9 @@ const Terminal = () => {
     } else if (cmd.startsWith("game.jc3 ")) {
       const fileName = cmd.substring(9).trim();
       const cwd = getCurrentDirectory();
-      let outputs = "Invalid code";
+      let outputs = invalidCode;
       if (!isFileExists("game.jc3", cwd)) {
-        outputs = "Can't find the file or file isn't supported";
+        outputs = noFileOrDirectory;
       } else if (
         isPathValid(cwd) &&
         (fileName === "just cause 3" || fileName === "Just Cause 3")
@@ -539,9 +538,9 @@ const Terminal = () => {
       const fileName = cmd.substring(8).trim();
       console.log(fileName);
       const cwd = getCurrentDirectory();
-      let outputs = "Invalid code";
+      let outputs = invalidCode;
       if (!isFileExists(fileName, cwd)) {
-        outputs = "Can't find the file or file isn't supported";
+        outputs = noFileOrDirectory;
       } else {
         outputs = (
           <span>My hobby is playing video games and watching movies.</span>
@@ -556,7 +555,7 @@ const Terminal = () => {
     } else {
       const newCommand = {
         input: cmd,
-        output: "Command not found",
+        output: noCommand,
         terminalLabel: terminalLabel,
       };
       setCommands((prevCommands) => [...prevCommands, newCommand]);
@@ -651,12 +650,12 @@ const Terminal = () => {
 
   return (
     <>
-      <section className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh]">
+      <section className="terminal flex justify-center items-cetner relative w-[100vw] h-[100vh] bg-[#87a2d8]">
         <div
           id="overlay"
-          className="terminal-overlay relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] transition-all ease-out delay-0 image-loaded"
+          className="terminal-overlay rounded-xl relative m-auto h-[85%] sm:h-[75%] sm:w-[90%] w-[75%] transition-all ease-out delay-0 image-loaded bg-[#000000]"
         >
-          <div className="terminalheader absolute w-[100%] top-[auto] left-[auto] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-auto bg-[#101010]">
+          <div className="terminalheader absolute w-[100%] top-[auto] left-[auto] flex items-center justify-end h-[5vh] sm:h-[5vh] rounded-xl rounded-b-none m-auto bg-[#1a1a1a] z-[100]">
             <div className="terminalOptions flex justify-between text-[#FFFFFF] bg-transparent px-[1vw] sm:px-[3vw]">
               <div className="rounded-full mx-[5px] h-[2vh] w-[2vh] bg-[#ffff70]"></div>
               <div
@@ -670,12 +669,6 @@ const Terminal = () => {
                 onClick={() => {
                   setCommands([]);
                   revokeTerminal.current = true;
-
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem("ShowHeader", "false");
-                  }
-                  setShowHeader(false);
-                  setRemoveFocus(false);
                 }}
               ></div>
             </div>

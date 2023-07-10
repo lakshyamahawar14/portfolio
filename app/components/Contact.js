@@ -1,206 +1,211 @@
-import React from "react";
+"use client";
+import React, { useRef, useState } from "react";
+import axios from "axios";
+
+const initValues = {
+  fullname: "",
+  profession: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+};
+
+const initState = { values: initValues };
 
 const Contact = () => {
+  const [contactState, setContactState] = useState(initState);
+  const nameRef = useRef(null);
+  const professionRef = useRef(null);
+  const emailRef = useRef(null);
+  const phoneRef = useRef(null);
+  const subjectRef = useRef(null);
+  const messageRef = useRef(null);
+
+  const { values } = contactState;
+
+  const handleChange = ({ target }) => {
+    setContactState((prevState) => ({
+      ...prevState,
+      values: {
+        ...prevState.values,
+        [target.name]: target.value,
+      },
+    }));
+  };
+
+  const handleSubmit = async () => {
+    if (
+      (nameRef && nameRef.current.value === "") ||
+      (professionRef && professionRef.current.value === "") ||
+      (emailRef && emailRef.current.value === "") ||
+      (phoneRef && phoneRef.current.value === "") ||
+      (subjectRef && subjectRef.current.value === "") ||
+      (messageRef && messageRef.current.value === "")
+    ) {
+      alert("Please fill the form!");
+      return;
+    }
+    const contactBtnElement = document.getElementById("contactbtn");
+    if (contactBtnElement) {
+      contactBtnElement.innerText = "Mailing...";
+    }
+    setContactState((prevState) => ({
+      ...prevState,
+    }));
+
+    axios({
+      url: "https://lakshya-mahawar.vercel.app/api/mail",
+      method: "post",
+      data: JSON.stringify(values),
+    }).then((res) => {
+      contactBtnElement.innerText = "Let's Talk";
+      alert("Mail Sent Successfully!");
+    });
+  };
   return (
     <>
-      <section className="contact relative overflow-y-hidden flex justify-center items-center h-[100vh] w-[100vw] px-[6vw] md:px-[3vw] usm:hidden">
-        <div className="contactCard relative flex justify-center items-center w-[100%] h-[100%] md:h-[80%] mx-[1rem] md:mx-[10px] max-w-[450px] max-h-[70vh] flex-col rounded-xl">
-          <div className="flex flex-col justify-center items-center m-auto w-[100%]">
-            <div className="py-[20px]">
-              <p className="text-[#9FEF00] text-[1.8rem] md:text-[1.7rem] sm:text-[1.3rem] text-center umd:text-[1.2rem]">
-                Add Description
-              </p>
-            </div>
-          </div>
-          <div className="w-[100%] h-[100%] md:w-[90%] md:h-[80%] px-[2vw] flex flex-col m-auto">
-            <div className="flex flex-col justify-center items-start py-[1rem] m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Subject
-                </legend>
-                <input
-                  type="text"
-                  name="subject"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
-            </div>
-
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Description
-                </legend>
-                <textarea
-                  type="text"
-                  name="description"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00] min-h-[30vh]"
-                ></textarea>
-              </fieldset>
-            </div>
-          </div>
+      <div className="isolate bg-[#56cae1] px-[6vw] py-[5vh]">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl text-[#0e2f36] sm:text-4xl rubik tracking-wide">
+            Contact Me
+          </h2>
         </div>
-
-        <div className="contactCard relative flex justify-center items-center w-[100%] h-[100%] md:h-[80%] mx-[1rem] md:mx-[10px] max-w-[450px] max-h-[70vh] flex-col bg-[transparent] rounded-xl">
-          <div className="flex flex-col justify-center items-center m-auto w-[100%]">
-            <div className="py-[20px]">
-              <p className="text-[#9FEF00] text-[1.8rem] md:text-[1.7rem] sm:text-[1.3rem] text-center umd:text-[1.2rem]">
-                Add Personal Details
-              </p>
-            </div>
-          </div>
-          <div className="w-[100%] h-[100%] md:w-[90%] md:h-[80%] px-[2vw] flex flex-col m-auto">
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Name
-                </legend>
+        <div className="mx-auto mt-16 max-w-xl sm:mt-20">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="fullname"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
+              >
+                Full Name
+              </label>
+              <div className="mt-2.5">
                 <input
                   type="text"
-                  name="name"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
+                  ref={nameRef}
+                  name="fullname"
+                  id="fullname"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required
+                  value={values.fullname}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Email
-                </legend>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="profession"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
+              >
+                Profession
+              </label>
+              <div className="mt-2.5">
+                <input
+                  type="text"
+                  ref={professionRef}
+                  name="profession"
+                  id="profession"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required
+                  value={values.profession}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="email"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
+              >
+                Email
+              </label>
+              <div className="mt-2.5">
                 <input
                   type="email"
+                  ref={emailRef}
                   name="email"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
+                  id="email"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required
+                  value={values.email}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Phone Number
-                </legend>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="phone"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
+              >
+                Phone Number
+              </label>
+              <div className="mt-2.5">
+                <input
+                  type="phone"
+                  ref={phoneRef}
+                  name="phone"
+                  id="phone"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-white"
+                  required
+                  value={values.phone}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="subject"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
+              >
+                Subject
+              </label>
+              <div className="mt-2.5">
                 <input
                   type="text"
-                  name="number"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
-            </div>
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Profession
-                </legend>
-                <input
-                  type="text"
-                  name="profession"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
-            </div>
-            <div className="flex flex-col justify-center items-center m-auto">
-              <input
-                type="submit"
-                value={"Contact"}
-                className="cursor-pointer outline-none border-none rounded-[50px] hover:bg-[#FCFCFC] button-transition h-[35px] w-[auto] px-[1rem] bg-[#9FEF00] text-[#101010]"
-              ></input>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="contact justify-center overflow-y-hidden items-center relative w-[100vw] h-[auto] min-h-[100vh] usm:flex usm:flex-col hidden">
-        <div className="contactCard relative flex justify-center items-center m-auto w-[90%] h-[90%] flex-col bg-[transparent] rounded-xl">
-          <div className="flex flex-col justify-center items-center m-auto w-[100%]">
-            <div className="py-[20px]">
-              <p className="text-[#9FEF00] text-[1.8rem] md:text-[1.7rem] sm:text-[1.3rem] text-center umd:text-[1.2rem]">
-                Contact Me
-              </p>
-            </div>
-          </div>
-          <div className="w-[100%] h-[100%] px-[6vw] flex flex-col m-auto mb-[1rem]">
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Name
-                </legend>
-                <input
-                  type="text"
-                  name="name"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
-            </div>
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Email
-                </legend>
-                <input
-                  type="email"
-                  name="email"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
-            </div>
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Phone Number
-                </legend>
-                <input
-                  type="text"
-                  name="number"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
-            </div>
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Profession
-                </legend>
-                <input
-                  type="text"
-                  name="profession"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
-            </div>
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Subject
-                </legend>
-                <input
-                  type="text"
+                  ref={subjectRef}
                   name="subject"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00]"
-                ></input>
-              </fieldset>
+                  id="subject"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required
+                  value={values.subject}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-            <div className="flex flex-col justify-center items-start m-auto w-[100%]">
-              <fieldset className="border-2 pb-[10px] w-[100%] border-[#A4B1CD]">
-                <legend className="text-[0.9rem] ml-[1rem] text-[#FCFCFC]">
-                  Description
-                </legend>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="message"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
+              >
+                Message
+              </label>
+              <div className="mt-2.5">
                 <textarea
-                  type="text"
-                  name="description"
-                  className="text-[1rem] caret-[#9FEF00] outline-none relative ml-[10px] px-[10px] h-[35px] w-[90%] broder-none border-b-[2px] border-[#9FEF00] min-h-[20vh]"
+                  name="message"
+                  ref={messageRef}
+                  id="message"
+                  rows="4"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required
+                  value={values.message}
+                  onChange={handleChange}
                 ></textarea>
-              </fieldset>
-            </div>
-            <div className="flex flex-col justify-center items-center m-auto">
-              <input
-                type="submit"
-                value={"Contact"}
-                className="cursor-pointer outline-none border-none rounded-[35px] hover:bg-[#FFFFFF] button-transition h-[25px] w-[auto] mt-[0.8rem] px-[0.8rem] bg-[#9FEF00] text-[#101010]"
-              ></input>
+              </div>
             </div>
           </div>
+          <div className="mt-10">
+            <button
+              id="contactbtn"
+              type="submit"
+              onClick={handleSubmit}
+              className="block w-[auto] bg-[#970bde] rounded-md ubuntu tracking-wide px-3.5 py-2.5 text-center text-sm shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-[#fcfcfc]"
+            >
+              {"Let's Talk"}
+            </button>
+          </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
