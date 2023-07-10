@@ -7,11 +7,6 @@ const nextConfig = {
         destination: "/about",
         permanent: true,
       },
-      {
-        source: "/api/mail",
-        destination: "http://127.0.0.1:3000/api/mail",
-        permanent: true,
-      },
     ];
   },
   async headers() {

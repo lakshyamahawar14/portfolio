@@ -38,7 +38,7 @@ const Contact = () => {
     }));
 
     axios({
-      url: "/api/mail",
+      url: "https://lakshya-mahawar.vercel.app/api/mail",
       method: "post",
       data: JSON.stringify(values),
     }).then((res) => {
