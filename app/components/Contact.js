@@ -50,7 +50,7 @@ const Contact = () => {
     <>
       <div className="isolate bg-[#56cae1] px-[6vw] py-[5vh]">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl text-[#0e2f36] sm:text-4xl rubik font-[700] tracking-wide">
+          <h2 className="text-3xl text-[#0e2f36] sm:text-4xl rubik tracking-wide">
             Contact Me
           </h2>
         </div>
@@ -59,7 +59,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="fullname"
-                className="block text-sm leading-6 ubuntu tracking-wide font-[700] text-[#0e2f36]"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
               >
                 Full Name
               </label>
@@ -78,7 +78,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="profession"
-                className="block text-sm leading-6 ubuntu tracking-wide font-[700] text-[#0e2f36]"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
               >
                 Profession
               </label>
@@ -97,7 +97,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="email"
-                className="block text-sm leading-6 ubuntu tracking-wide font-[700] text-[#0e2f36]"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
               >
                 Email
               </label>
@@ -116,7 +116,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="phone"
-                className="block text-sm leading-6 ubuntu tracking-wide font-[700] text-[#0e2f36]"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
               >
                 Phone Number
               </label>
@@ -135,7 +135,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="subject"
-                className="block text-sm leading-6 ubuntu tracking-wide font-[700] text-[#0e2f36]"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
               >
                 Subject
               </label>
@@ -154,7 +154,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="message"
-                className="block text-sm leading-6 ubuntu tracking-wide font-[700] text-[#0e2f36]"
+                className="block text-sm leading-6 ubuntu tracking-wide text-[#0e2f36]"
               >
                 Message
               </label>
@@ -176,7 +176,7 @@ const Contact = () => {
               id="contactbtn"
               type="submit"
               onClick={handleSubmit}
-              className="block w-[auto] bg-[#970bde] rounded-md ubuntu tracking-wide font-[700] px-3.5 py-2.5 text-center text-sm shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-[#fcfcfc]"
+              className="block w-[auto] bg-[#970bde] rounded-md ubuntu tracking-wide px-3.5 py-2.5 text-center text-sm shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-[#fcfcfc]"
             >
               {"Let's Talk"}
             </button>

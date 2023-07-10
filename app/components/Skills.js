@@ -49,7 +49,7 @@ const Skills = () => {
     <>
       <section className="section relative flex flex-col justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#e9c1de]">
         <div className="py-[2rem] flex justify-center w-[100%]">
-          <h1 className="rubik font-[800] text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
+          <h1 className="rubik  text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Frameworks and Domains
           </h1>
         </div>
@@ -59,10 +59,10 @@ const Skills = () => {
               className="card rounded bg-[#ffffff] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
-              <h2 className="rubik font-[800] text-[#5d1048] text-center">
+              <h2 className="rubik  text-[#5d1048] text-center">
                 {framework.name}
               </h2>
-              <p className="plex font-[700] text-start text-[#2aabc8]">
+              <p className="plex  text-start text-[#2aabc8]">
                 {framework.description}
               </p>
             </div>
@@ -72,7 +72,7 @@ const Skills = () => {
 
       <section className="section relative flex flex-col justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#eaffa0]">
         <div className="py-[2rem] flex justify-center w-[100%]">
-          <h1 className="rubik font-[800] text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
+          <h1 className="rubik  text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Programming Languages
           </h1>
         </div>
@@ -82,10 +82,10 @@ const Skills = () => {
               className="card rounded bg-[#ffffff] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
-              <h2 className="rubik font-[800] text-[#5d1048] text-center">
+              <h2 className="rubik  text-[#5d1048] text-center">
                 {language.name}
               </h2>
-              <p className="plex font-[700] text-start text-[#51b52d]">
+              <p className="plex  text-start text-[#51b52d]">
                 {language.description}
               </p>
             </div>
@@ -95,7 +95,7 @@ const Skills = () => {
 
       <section className="section relative flex flex-col justify-center items-start py-[8vh] min-h-[100vh] h-[auto] w-[100vw] sm:flex-col px-[6vw] bg-[#cbadfc]">
         <div className="py-[2rem] flex justify-center w-[100%]">
-          <h1 className="rubik font-[800] text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
+          <h1 className="rubik  text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Databases
           </h1>
         </div>
@@ -105,10 +105,10 @@ const Skills = () => {
               className="card rounded bg-[#ffffff] flex flex-col justify-between mb-4 mx-2"
               key={index}
             >
-              <h2 className="rubik font-[800] text-[#5d1048] text-center">
+              <h2 className="rubik  text-[#5d1048] text-center">
                 {database.name}
               </h2>
-              <p className="plex font-[700] text-start text-[#b040d6]">
+              <p className="plex  text-start text-[#b040d6]">
                 {database.description}
               </p>
             </div>
