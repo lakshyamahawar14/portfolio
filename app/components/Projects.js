@@ -30,6 +30,16 @@ const Projects = () => {
             Individuals. This website is made with{" "}
             <span className="text-[#19633c]">ReactJS</span>. User can give
             Cognitive assessment tests and get personalized support materials.
+            <br />
+            Access the website{" "}
+            <a
+              href="http://healthgpt.surge.sh/"
+              target="_blank"
+              className="underline text-[#19633c]"
+            >
+              here
+            </a>
+            .
           </p>
         </div>
       </section>
@@ -48,6 +58,16 @@ const Projects = () => {
             <span className="text-[#100f48]">Python</span>, this is just a
             <span className="text-[#100f48]"> ReactJS</span> implementation of
             that project.
+            <br />
+            Access the website{" "}
+            <a
+              href="https://maze-ai.netlify.app/"
+              target="_blank"
+              className="underline text-[#100f48]"
+            >
+              here
+            </a>
+            .
           </p>
         </div>
         <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%]">
@@ -60,7 +80,7 @@ const Projects = () => {
             alt="A 15x15 Generated Maze"
             priority={true}
           />
-          <p className="text-[1rem] pl-[10px] ubuntu text-[#125413] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
+          <p className="text-[1rem] pr-[10px] ubuntu text-[#125413] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
             A generated 15x15 maze
           </p>
         </div>

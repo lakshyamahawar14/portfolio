@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 
 const About = () => {
   return (
@@ -7,7 +8,7 @@ const About = () => {
       <section className="about py-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#78dbbd]">
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
           <Image
-            src="/assets/images/joker_dp.jpg"
+            src="/assets/images/heathjoker_pfp.jpg"
             width={300}
             height={300}
             key={Math.random}
@@ -37,6 +38,46 @@ const About = () => {
             tho i&apos;ve played almost all major AAA games). And yeah, I study
             in <span className="text-[#63155b]">IIT Roorkee</span> under B. Tech
             programme.
+          </p>
+        </div>
+      </section>
+
+      <section className="about py-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#96e5f3]">
+        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[80%] sm:max-w-[none] w-[100%]">
+          <p className="text-[2.5rem] text-[#0c3b43] text-center md:text-[2rem] sm:text-[1.5rem] w-[100%]">
+            Social Media & Other Links
+          </p>
+          <p className="text-[1.3rem] flex flex-col items-start justify-center py-[2rem] md:text-[1.2rem] tracking-wide w-[100%] m-auto text-[#0c3b43] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
+            <a
+              href="https://github.com/lakshyamahawar14"
+              target="_blank"
+              className="ml-[40%] flex justify-center items-center my-[10px]"
+            >
+              <span className="flex justify-center items-center my-[10px]">
+                <AiFillGithub size={50} color="#0c3b43" />{" "}
+                <span className="px-[5px]">Github</span>
+              </span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lakshya-mahawar-099788209/"
+              target="_blank"
+              className="ml-[40%] flex justify-center items-center my-[10px]"
+            >
+              <span className="flex justify-center items-center my-[10px]">
+                <AiFillLinkedin size={50} color="#0c3b43" />{" "}
+                <span className="px-[5px]">LinkedIn</span>
+              </span>
+            </a>
+            <a
+              href="https://www.instagram.com/lakshyamahawar14/"
+              target="_blank"
+              className="ml-[40%] flex justify-center items-center my-[10px]"
+            >
+              <span className="flex justify-center items-center my-[10px]">
+                <AiFillInstagram size={50} color="#0c3b43" />{" "}
+                <span className="px-[5px]">Instagram</span>
+              </span>
+            </a>
           </p>
         </div>
       </section>
