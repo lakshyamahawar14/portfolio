@@ -67,9 +67,9 @@ const Contact = () => {
     <>
       <div className="isolate bg-[#56cae1] px-[6vw] py-[8vh]">
         <div className="mx-auto max-w-2xl text-center mt-[4vh]">
-          <h2 className="text-[2.5rem] md:text-[2rem] sm:text-[1.5rem] text-[#0e2f36] sm:text-4xl  tracking-wide">
+          <h1 className="text-[2.5rem] md:text-[2rem] sm:text-[1.5rem] text-[#0e2f36] sm:text-4xl  tracking-wide">
             Contact Me
-          </h2>
+          </h1>
         </div>
         <div className="mx-auto mt-16 max-w-xl sm:mt-20">
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
