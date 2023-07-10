@@ -51,7 +51,7 @@ const About = () => {
             <a
               href="https://github.com/lakshyamahawar14"
               target="_blank"
-              className="ml-[40%] flex justify-center items-center my-[10px]"
+              className="ml-[40%] flex justify-center items-center my-[10px] sm:ml-[30%]"
             >
               <span className="flex justify-center items-center my-[10px]">
                 <AiFillGithub size={50} color="#0c3b43" />{" "}
@@ -61,7 +61,7 @@ const About = () => {
             <a
               href="https://www.linkedin.com/in/lakshya-mahawar-099788209/"
               target="_blank"
-              className="ml-[40%] flex justify-center items-center my-[10px]"
+              className="ml-[40%] flex justify-center items-center my-[10px] sm:ml-[30%]"
             >
               <span className="flex justify-center items-center my-[10px]">
                 <AiFillLinkedin size={50} color="#0c3b43" />{" "}
@@ -71,7 +71,7 @@ const About = () => {
             <a
               href="https://www.instagram.com/lakshyamahawar14/"
               target="_blank"
-              className="ml-[40%] flex justify-center items-center my-[10px]"
+              className="ml-[40%] flex justify-center items-center my-[10px] sm:ml-[30%]"
             >
               <span className="flex justify-center items-center my-[10px]">
                 <AiFillInstagram size={50} color="#0c3b43" />{" "}
