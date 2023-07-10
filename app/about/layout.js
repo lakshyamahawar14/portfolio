@@ -3,7 +3,7 @@ import "../globals.css";
 export const metadata = {
   title: "About Me",
   description:
-    "About Page for Lakshya Mahawar's Portfolio. This portfolio website is made using NextJS 13 framework, which is a full stack web developemnt framework. This is a personal website to display the information, skills, projects related to Lakshya Mahawar.",
+    "About Page for Lakshya Mahawar's Portfolio. This portfolio website is made using NextJS 13 framework, incorporating Javascript and Tailwind CSS.",
 };
 
 export default function RootLayout({ children }) {
