@@ -54,7 +54,7 @@ const About = () => {
               className="ml-[40%] flex justify-center items-center my-[10px] sm:ml-[30%]"
             >
               <span className="flex justify-center items-center my-[10px]">
-                <AiFillGithub size={50} color="#0c3b43" />{" "}
+                <AiFillGithub size={30} color="#0c3b43" />{" "}
                 <span className="px-[5px]">Github</span>
               </span>
             </a>
@@ -64,7 +64,7 @@ const About = () => {
               className="ml-[40%] flex justify-center items-center my-[10px] sm:ml-[30%]"
             >
               <span className="flex justify-center items-center my-[10px]">
-                <AiFillLinkedin size={50} color="#0c3b43" />{" "}
+                <AiFillLinkedin size={30} color="#0c3b43" />{" "}
                 <span className="px-[5px]">LinkedIn</span>
               </span>
             </a>
@@ -74,7 +74,7 @@ const About = () => {
               className="ml-[40%] flex justify-center items-center my-[10px] sm:ml-[30%]"
             >
               <span className="flex justify-center items-center my-[10px]">
-                <AiFillInstagram size={50} color="#0c3b43" />{" "}
+                <AiFillInstagram size={30} color="#0c3b43" />{" "}
                 <span className="px-[5px]">Instagram</span>
               </span>
             </a>
