@@ -24,7 +24,7 @@ const Header = (props) => {
     <>
       <header
         id="header"
-        className={`header sticky transition-all ease-linear delay-0 h-[8vh] flex justify-center px-[6vw] w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[8vh] glass bg-[${
+        className={`header absolute transition-all ease-linear delay-0 h-[8vh] flex justify-center px-[6vw] w-[100%] sm:flex-col sm:justify-start sm:items-center sm:h-[auto] sm:min-h-[8vh] glass bg-[${
           props.bg || "#2a8423"
         }] z-[100]`}
       >

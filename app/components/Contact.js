@@ -65,8 +65,8 @@ const Contact = () => {
   };
   return (
     <>
-      <div className="isolate bg-[#56cae1] px-[6vw] py-[5vh]">
-        <div className="mx-auto max-w-2xl text-center">
+      <div className="isolate bg-[#56cae1] px-[6vw] py-[8vh]">
+        <div className="mx-auto max-w-2xl text-center mt-[4vh]">
           <h2 className="text-3xl text-[#0e2f36] sm:text-4xl rubik tracking-wide">
             Contact Me
           </h2>

@@ -47,7 +47,7 @@ const Skills = () => {
 
   return (
     <>
-      <section className="relative flex flex-col justify-center items-center py-[8vh] min-h-[100vh] h-[auto] w-[auto] max-w-[100vw] sm:flex-col bg-[#e9c1de]">
+      <section className="relative flex flex-col justify-center items-center pt-[8vh] min-h-[100vh] h-[auto] w-[auto] max-w-[100vw] sm:flex-col bg-[#e9c1de]">
         <div className="py-[2rem] flex justify-center w-[100%] px-[6vw]">
           <h1 className=" text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Frameworks and Domains

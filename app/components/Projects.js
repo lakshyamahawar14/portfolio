@@ -4,7 +4,7 @@ import Image from "next/image";
 const Projects = () => {
   return (
     <>
-      <section className="projects py-[8vh] luxhealth relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#5dc6ea]">
+      <section className="projects pt-[8vh] luxhealth relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#5dc6ea]">
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
           <Image
             src="/assets/images/chatbot_pfp.png"

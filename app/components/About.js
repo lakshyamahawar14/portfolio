@@ -5,7 +5,7 @@ import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 const About = () => {
   return (
     <>
-      <section className="about py-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#78dbbd]">
+      <section className="about pt-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#78dbbd]">
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
           <Image
             src="/assets/images/heathjoker_pfp.jpg"
