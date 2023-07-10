@@ -199,7 +199,7 @@ const Contact = () => {
               id="contactbtn"
               type="submit"
               onClick={handleSubmit}
-              className="block w-[auto] bg-[#970bde] rounded-md  tracking-wide px-3.5 py-2.5 text-center text-sm shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-[#fcfcfc]"
+              className="block w-[auto] bg-[#970bde] rounded-md  tracking-wide px-3.5 py-2.5 text-center text-sm shadow-sm hover:bg-indigo-500 focus:bg-indigo-500 text-[#fcfcfc]"
             >
               {"Let's Talk"}
             </button>
