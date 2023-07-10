@@ -28,7 +28,7 @@ const Header = (props) => {
           props.bg || "#2a8423"
         }] z-[100]`}
       >
-        <div
+        <nav
           id="linksContainer"
           className="linksContainer z-[40] transition-all ease-linear delay-0 flex justify-evenly items-center w-[100%] max-w-[600px] sm:flex-col sm:items-center sm:justify-center sm:h-[0px]"
         >
@@ -84,7 +84,7 @@ const Header = (props) => {
               Contact Me
             </Link>
           </div>
-        </div>
+        </nav>
       </header>
     </>
   );
