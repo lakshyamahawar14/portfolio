@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 
 const initValues = {
@@ -15,6 +15,12 @@ const initState = { values: initValues };
 
 const Contact = () => {
   const [contactState, setContactState] = useState(initState);
+  const nameRef = useRef(null);
+  const professionRef = useRef(null);
+  const emailRef = useRef(null);
+  const phoneRef = useRef(null);
+  const subjectRef = useRef(null);
+  const messageRef = useRef(null);
 
   const { values } = contactState;
 
@@ -28,8 +34,18 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    if (
+      (nameRef && nameRef.current.value === "") ||
+      (professionRef && professionRef.current.value === "") ||
+      (emailRef && emailRef.current.value === "") ||
+      (phoneRef && phoneRef.current.value === "") ||
+      (subjectRef && subjectRef.current.value === "") ||
+      (messageRef && messageRef.current.value === "")
+    ) {
+      alert("Please fill the form!");
+      return;
+    }
     const contactBtnElement = document.getElementById("contactbtn");
     if (contactBtnElement) {
       contactBtnElement.innerText = "Mailing...";
@@ -67,6 +83,7 @@ const Contact = () => {
               <div className="mt-2.5">
                 <input
                   type="text"
+                  ref={nameRef}
                   name="fullname"
                   id="fullname"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -86,6 +103,7 @@ const Contact = () => {
               <div className="mt-2.5">
                 <input
                   type="text"
+                  ref={professionRef}
                   name="profession"
                   id="profession"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -105,6 +123,7 @@ const Contact = () => {
               <div className="mt-2.5">
                 <input
                   type="email"
+                  ref={emailRef}
                   name="email"
                   id="email"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -124,6 +143,7 @@ const Contact = () => {
               <div className="mt-2.5">
                 <input
                   type="phone"
+                  ref={phoneRef}
                   name="phone"
                   id="phone"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-white"
@@ -143,6 +163,7 @@ const Contact = () => {
               <div className="mt-2.5">
                 <input
                   type="text"
+                  ref={subjectRef}
                   name="subject"
                   id="subject"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -162,6 +183,7 @@ const Contact = () => {
               <div className="mt-2.5">
                 <textarea
                   name="message"
+                  ref={messageRef}
                   id="message"
                   rows="4"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -176,7 +198,7 @@ const Contact = () => {
             <button
               id="contactbtn"
               type="submit"
-              onSubmit={handleSubmit}
+              onClick={handleSubmit}
               className="block w-[auto] bg-[#970bde] rounded-md ubuntu tracking-wide px-3.5 py-2.5 text-center text-sm shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-[#fcfcfc]"
             >
               {"Let's Talk"}
