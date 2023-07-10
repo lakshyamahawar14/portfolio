@@ -10,7 +10,7 @@ const Header = (props) => {
         if (burger) {
           burger.classList.add("rotated");
         }
-        menu.style.height = "40vh";
+        menu.style.height = "35vh";
       } else {
         if (burger) {
           burger.classList.remove("rotated");
