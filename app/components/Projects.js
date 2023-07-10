@@ -8,8 +8,8 @@ const Projects = () => {
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
           <Image
             src="/assets/images/chatbot_pfp.png"
-            width={400}
-            height={800}
+            width={256}
+            height={512}
             key={Math.random}
             className="relative w-[60%] h-[70%] sm:w-[90%] sm:h-[auto] rounded-xl"
             alt="A picture of Lux Chatbot"
@@ -26,16 +26,24 @@ const Projects = () => {
           <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem] text-[#111649]">
             It&apos;s a chatbot integrated in a website specially designed to
             provide{" "}
-            <span className="text-[#19633c]">mental health support</span> to
+            <span className="text-[#144b2d]">mental health support</span> to
             Individuals. This website is made with{" "}
-            <span className="text-[#19633c]">ReactJS</span>. User can give
-            Cognitive assessment tests and get personalized support materials.
+            <span className="text-[#144b2d]">ReactJS</span> framework. Users can
+            give{" "}
+            <a
+              href="https://my.clevelandclinic.org/health/articles/22306-cognitive-test"
+              target="_blank"
+              className="text-[#144b2d] underline"
+            >
+              cognitive assessment tests
+            </a>{" "}
+            and get personalized support materials.
             <br />
             Access the website{" "}
             <a
               href="http://healthgpt.surge.sh/"
               target="_blank"
-              className="underline text-[#19633c]"
+              className="underline text-[#144b2d]"
             >
               here
             </a>
@@ -53,10 +61,17 @@ const Projects = () => {
             It&apos;s a <span className="text-[#100f48]">Maze</span> puzzle game
             project in which user can generate maze of any size and desired
             difficulty and play the game to solve that. Machine learning is also
-            used in the project to determine the difficulty of the maze based on
-            many parameters. The original project code is made in{" "}
-            <span className="text-[#100f48]">Python</span>, this is just a
-            <span className="text-[#100f48]"> ReactJS</span> implementation of
+            used in the project to determine the{" "}
+            <a
+              href="https://puzzling.stackexchange.com/questions/5919/whats-the-best-way-to-rate-how-difficult-a-maze-is"
+              target="_blank"
+              className="underline text-[#100f48]"
+            >
+              difficulty of the maze
+            </a>{" "}
+            based on many metrics. The original project code is written in{" "}
+            <span className="text-[#100f48]">Python</span>, this is just a{" "}
+            <span className="text-[#100f48]">ReactJS</span> implementation of
             that project.
             <br />
             Access the website{" "}
@@ -73,8 +88,8 @@ const Projects = () => {
         <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%]">
           <Image
             src="/assets/images/maze15_pfp.png"
-            width={300}
-            height={300}
+            width={256}
+            height={256}
             key={Math.random}
             className="relative w-[70%] sm:w-[80%] h-[auto] rounded-xl"
             alt="A 15x15 Generated Maze"

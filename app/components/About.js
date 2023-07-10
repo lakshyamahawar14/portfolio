@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
+import { BiCodeAlt } from "react-icons/bi";
 
 const About = () => {
   return (
@@ -9,10 +10,10 @@ const About = () => {
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
           <Image
             src="/assets/images/heathjoker_pfp.jpg"
-            width={300}
-            height={300}
+            width={256}
+            height={256}
             key={Math.random}
-            className="relative w-[60%] sm:w-[80%] h-[auto] rounded-xl"
+            className="relative w-[70%] sm:w-[80%] h-[auto] rounded-xl"
             alt="Picture picture of Author"
             priority={true}
           />
@@ -30,14 +31,48 @@ const About = () => {
           <p className="text-[1.3rem] py-[2rem] md:text-[1.2rem] tracking-wide  text-[#134c4d] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
             I&apos;m <span className="text-[#63155b]">20</span> Years Old. My
             hobby is playing video games and watching movies. My favourite movie
-            is <span className="text-[#63155b]">Interstellar</span> (but my
-            character is more like <span className="text-[#63155b]">Joker</span>{" "}
-            from <span className="text-[#63155b]">The Dark Knight</span>) and
-            favourte game is{" "}
-            <span className="text-[#63155b]">Just Cause 3</span> (underrated,
-            tho i&apos;ve played almost all major AAA games). And yeah, I study
-            in <span className="text-[#63155b]">IIT Roorkee</span> under B. Tech
-            programme.
+            is{" "}
+            <a
+              href="https://www.imdb.com/title/tt0816692/"
+              target="_blank"
+              className="text-[#63155b] underline"
+            >
+              Interstellar
+            </a>{" "}
+            (but my character is more like{" "}
+            <a
+              href="https://batman.fandom.com/wiki/The_Joker_(Nolanverse)"
+              target="_blank"
+              className="text-[#63155b] underline"
+            >
+              Joker
+            </a>{" "}
+            from{" "}
+            <a
+              href="https://www.imdb.com/title/tt0468569/"
+              target="_blank"
+              className="text-[#63155b] underline"
+            >
+              The Dark Knight
+            </a>
+            ) and favourte game is{" "}
+            <a
+              href="https://store.steampowered.com/app/225540/Just_Cause_3/"
+              target="_blank"
+              className="text-[#63155b] underline"
+            >
+              Just Cause 3
+            </a>{" "}
+            (underrated, tho i&apos;ve played almost all major AAA games). And
+            yeah, I study in{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/IIT_Roorkee"
+              target="_blank"
+              className="text-[#63155b] underline"
+            >
+              IIT Roorkee
+            </a>{" "}
+            under B. Tech programme.
           </p>
         </div>
       </section>
@@ -54,7 +89,7 @@ const About = () => {
               className="ml-[45%] flex justify-center items-center my-[10px] md:ml-[40%] sm:ml-[34%]"
             >
               <span className="flex justify-center items-center my-[10px]">
-                <AiFillGithub size={30} color="#0c3b43" />{" "}
+                <AiFillGithub size={25} color="#0c3b43" />{" "}
                 <span className="px-[5px]">Github</span>
               </span>
             </a>
@@ -64,7 +99,7 @@ const About = () => {
               className="ml-[45%] flex justify-center items-center my-[10px] md:ml-[40%] sm:ml-[34%]"
             >
               <span className="flex justify-center items-center my-[10px]">
-                <AiFillLinkedin size={30} color="#0c3b43" />{" "}
+                <AiFillLinkedin size={25} color="#0c3b43" />{" "}
                 <span className="px-[5px]">LinkedIn</span>
               </span>
             </a>
@@ -74,8 +109,28 @@ const About = () => {
               className="ml-[45%] flex justify-center items-center my-[10px] md:ml-[40%] sm:ml-[34%]"
             >
               <span className="flex justify-center items-center my-[10px]">
-                <AiFillInstagram size={30} color="#0c3b43" />{" "}
+                <AiFillInstagram size={25} color="#0c3b43" />{" "}
                 <span className="px-[5px]">Instagram</span>
+              </span>
+            </a>
+            <a
+              href="https://www.codechef.com/users/the_scammer"
+              target="_blank"
+              className="ml-[45%] flex justify-center items-center my-[10px] md:ml-[40%] sm:ml-[34%]"
+            >
+              <span className="flex justify-center items-center my-[10px]">
+                <BiCodeAlt size={25} color="#0c3b43" />{" "}
+                <span className="px-[5px]">CodeChef</span>
+              </span>
+            </a>
+            <a
+              href="https://leetcode.com/lakshyamahawar14/"
+              target="_blank"
+              className="ml-[45%] flex justify-center items-center my-[10px] md:ml-[40%] sm:ml-[34%]"
+            >
+              <span className="flex justify-center items-center my-[10px]">
+                <BiCodeAlt size={25} color="#0c3b43" />{" "}
+                <span className="px-[5px]">LeetCode</span>
               </span>
             </a>
           </p>
