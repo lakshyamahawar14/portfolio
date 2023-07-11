@@ -201,9 +201,6 @@ const Terminal = () => {
             alt="Picture picture of Author"
             priority={true}
           />
-          <span className="text-[1rem] md:text-[0.9rem] sm:text-[0.7rem]">
-            Pic - Admin (Me)
-          </span>
         </span>
       );
       const newCommand = {

@@ -15,9 +15,6 @@ const Projects = () => {
             alt="A picture of Lux Chatbot"
             priority={true}
           />
-          <p className="text-[1rem] pl-[10px]  text-[#111649] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
-            A screenshot of Lux Chatbot
-          </p>
         </div>
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
           <h1 className="text-[2.5rem] text-[#111649] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
@@ -90,9 +87,6 @@ const Projects = () => {
             alt="A 15x15 Generated Maze"
             priority={true}
           />
-          <p className="text-[1rem] pr-[10px]  text-[#125413] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
-            A generated 15x15 maze
-          </p>
         </div>
       </section>
 
@@ -107,9 +101,6 @@ const Projects = () => {
             alt="A screenshot of Visual React website"
             priority={true}
           />
-          <p className="text-[1rem] pl-[10px]  text-[#583112] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
-            A screenshot of Visual React website
-          </p>
         </div>
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
           <h1 className="text-[2.5rem] text-[#583112] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
