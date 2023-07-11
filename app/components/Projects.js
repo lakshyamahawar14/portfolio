@@ -139,6 +139,41 @@ const Projects = () => {
           </p>
         </div>
       </section>
+
+      <section className="projects mazeai relative flex justify-center items-center py-[8vh] h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#c895ff]">
+        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none] pb-[1rem]">
+          <h2 className="text-[2.5rem] text-[#1f0a36] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
+            Questa
+          </h2>
+          <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] text-[#1f0a36] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
+            It&apos;s a Question paper making website, where its format is
+            predesigned to generate a question paper. This tool is mainly useful
+            when you don't have much time to make and edit a MS word file. This
+            website is made using NextJS.
+            <br />
+            Access the website{" "}
+            <a
+              href="https://questaweb.vercel.app/"
+              target="_blank"
+              className="underline text-[#114234]"
+            >
+              here
+            </a>
+            .
+          </p>
+        </div>
+        <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%] sm:w-[100%]">
+          <Image
+            src="/assets/images/questa_pfp.png"
+            width={300}
+            height={300}
+            key={Math.random}
+            className="relative h-[100%] w-[auto] rounded-xl"
+            alt="UI of Questa"
+            priority={true}
+          />
+        </div>
+      </section>
     </>
   );
 };
