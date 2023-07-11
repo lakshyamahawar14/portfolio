@@ -82,7 +82,7 @@ const About = () => {
           <h2 className="text-[2.5rem] text-[#0c3b43] text-center md:text-[2rem] sm:text-[1.5rem] w-[100%]">
             Social Media & Other Links
           </h2>
-          <p className="text-[1.3rem] flex flex-col items-start justify-center py-[2rem] md:text-[1.2rem] tracking-wide w-[100%] m-auto text-[#0c3b43] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
+          {/* <p className="text-[1.3rem] flex flex-col items-start justify-center py-[2rem] md:text-[1.2rem] tracking-wide w-[100%] m-auto text-[#0c3b43] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
             <a
               href="https://github.com/lakshyamahawar14"
               target="_blank"
@@ -133,7 +133,67 @@ const About = () => {
                 <span className="px-[5px]">LeetCode</span>
               </span>
             </a>
-          </p>
+          </p> */}
+          <div className="w-[100%]">
+            <p className="max-w-[250px] m-auto flex items-center justify-between">
+              <a
+                href="https://github.com/lakshyamahawar14"
+                target="_blank"
+                className="flex justify-center items-center my-[10px]"
+              >
+                <span className="flex justify-center items-center my-[10px]">
+                  <AiFillGithub size={25} color="#0c3b43" />{" "}
+                  <span className="px-[5px]">Github</span>
+                </span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/lakshya-mahawar-099788209/"
+                target="_blank"
+                className="flex justify-center items-center my-[10px]"
+              >
+                <span className="flex justify-center items-center my-[10px]">
+                  <AiFillLinkedin size={25} color="#0c3b43" />{" "}
+                  <span className="px-[5px]">LinkedIn</span>
+                </span>
+              </a>
+            </p>
+
+            <p className="max-w-[250px] m-auto flex items-center justify-between">
+              <a
+                href="https://www.instagram.com/lakshyamahawar14/"
+                target="_blank"
+                className="flex justify-center items-center my-[10px]"
+              >
+                <span className="flex justify-center items-center my-[10px]">
+                  <AiFillInstagram size={25} color="#0c3b43" />{" "}
+                  <span className="px-[5px]">Instagram</span>
+                </span>
+              </a>
+              <a
+                href="https://www.codechef.com/users/the_scammer"
+                target="_blank"
+                className="flex justify-center items-center my-[10px]"
+              >
+                <span className="flex justify-center items-center my-[10px]">
+                  <BiCodeAlt size={25} color="#0c3b43" />{" "}
+                  <span className="px-[5px]">CodeChef</span>
+                </span>
+              </a>
+            </p>
+
+            <p className="max-w-[250px] m-auto flex items-center justify-between">
+              <a
+                href="https://leetcode.com/lakshyamahawar14/"
+                target="_blank"
+                className="flex justify-center items-center my-[10px]"
+              >
+                <span className="flex justify-center items-center my-[10px]">
+                  <BiCodeAlt size={25} color="#0c3b43" />{" "}
+                  <span className="px-[5px]">LeetCode</span>
+                </span>
+              </a>
+            </p>
+          </div>
         </div>
       </section>
     </>
