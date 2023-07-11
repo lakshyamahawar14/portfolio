@@ -116,7 +116,7 @@ const Projects = () => {
             Visual React
           </h1>
           <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem] text-[#583112]">
-            It's a website made in{" "}
+            It&apos;s a website made in{" "}
             <a
               href="https://svelte.dev/"
               target="_blank"
