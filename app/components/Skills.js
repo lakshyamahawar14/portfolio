@@ -80,7 +80,7 @@ const Skills = () => {
               className="card rounded bg-[#ffffff] flex flex-col justify-between "
               key={index}
             >
-              <h2 className="  text-[#5d1048] text-center">{language.name}</h2>
+              <h2 className="  text-[#214c14] text-center">{language.name}</h2>
               <p className="  text-start text-[#51b52d]">
                 {language.description}
               </p>
@@ -101,7 +101,7 @@ const Skills = () => {
               className="card rounded bg-[#ffffff] flex flex-col justify-between "
               key={index}
             >
-              <h2 className="  text-[#5d1048] text-center">{database.name}</h2>
+              <h2 className="  text-[#aa319c] text-center">{database.name}</h2>
               <p className="  text-start text-[#b040d6]">
                 {database.description}
               </p>
