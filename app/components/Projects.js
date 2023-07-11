@@ -5,19 +5,19 @@ const Projects = () => {
   return (
     <>
       <section className="projects pt-[8vh] luxhealth relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#5dc6ea]">
-        <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
+        <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%] sm:max-h-[400px] sm:w-[100%]">
           <Image
             src="/assets/images/chatbot_pfp.png"
             width={300}
             height={600}
             key={Math.random}
-            className="relative h-[100%] w-[auto] rounded-xl"
+            className="relative h-[80%] w-[auto] rounded-xl"
             alt="A picture of Lux Chatbot"
             priority={true}
           />
         </div>
-        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
-          <h1 className="text-[2.5rem] text-[#111649] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
+        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none] pb-[4vh]">
+          <h1 className="text-[2.5rem] text-[#111649] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] pt-[1rem]">
             LuxHealth
           </h1>
           <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem] text-[#111649]">
@@ -47,7 +47,7 @@ const Projects = () => {
       </section>
 
       <section className="projects mazeai relative flex justify-center items-center py-[8vh] h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#76eb84]">
-        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
+        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none] pb-[1rem]">
           <h2 className="text-[2.5rem] text-[#125413] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
             MazeAI
           </h2>
@@ -77,7 +77,7 @@ const Projects = () => {
             .
           </p>
         </div>
-        <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%]">
+        <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%] sm:w-[100%]">
           <Image
             src="/assets/images/maze15_pfp.png"
             width={300}
@@ -91,7 +91,7 @@ const Projects = () => {
       </section>
 
       <section className="projects pt-[8vh] luxhealth relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#f3b17b]">
-        <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
+        <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%] sm:w-[100%]">
           <Image
             src="/assets/images/visualreact_pfp.png"
             width={600}
@@ -103,7 +103,7 @@ const Projects = () => {
           />
         </div>
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
-          <h2 className="text-[2.5rem] text-[#583112] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
+          <h2 className="text-[2.5rem] text-[#583112] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] pt-[1rem]">
             Visual React
           </h2>
           <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem] text-[#583112]">

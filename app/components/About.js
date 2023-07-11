@@ -8,7 +8,7 @@ const About = () => {
   return (
     <>
       <section className="pt-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#78dbbd]">
-        <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
+        <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%] sm:w-[100%]">
           <Image
             src="/assets/images/heathjoker_pfp.jpg"
             width={300}
@@ -20,7 +20,7 @@ const About = () => {
           />
         </div>
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
-          <h1 className="text-[2.5rem] text-[#134c4d] text-start md:text-[2rem] sm:text-[1.5rem]">
+          <h1 className="text-[2.5rem] text-[#134c4d] text-start md:text-[2rem] sm:text-[1.5rem] pt-[1rem]">
             I&apos;m{" "}
             <span className=" text-[#134c4d] tracking-wider">
               Lakshya Mahawar
@@ -67,7 +67,7 @@ const About = () => {
       </section>
 
       <section className="py-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#92b0e8]">
-        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
+        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none] pb-[1rem]">
           <h2 className="text-[2.5rem] text-[#0c1c3b] text-start md:text-[2rem] sm:text-[1.5rem]">
             I study in{" "}
             <span className=" text-[#0c1c3b] tracking-wider">IIT Roorkee</span>
@@ -87,7 +87,7 @@ const About = () => {
             .
           </p>
         </div>
-        <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%]">
+        <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%] sm:w-[100%]">
           <Image
             src="/assets/images/iitr_bg-min.jpg"
             width={300}
@@ -102,7 +102,7 @@ const About = () => {
 
       <section className="about py-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#eaa7e1]">
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[80%] sm:max-w-[none] w-[100%]">
-          <h2 className="text-[2.5rem] text-[#430e3c] text-center md:text-[2rem] sm:text-[1.5rem] w-[100%]">
+          <h2 className="text-[2.5rem] text-[#430e3c] text-center md:text-[2rem] sm:text-[1.5rem] w-[100%] pb-[1rem]">
             Social Media & Other Links
           </h2>
           <div className="w-[100%]">
