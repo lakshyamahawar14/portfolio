@@ -70,9 +70,9 @@ const Skills = () => {
 
       <section className="relative flex flex-col justify-center items-center py-[8vh] min-h-[100vh] h-[auto] w-[auto] max-w-[100vw] sm:flex-col bg-[#c2f98b]">
         <div className="py-[2rem] flex justify-center w-[100%] px-[6vw]">
-          <h1 className="  text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
+          <h2 className="  text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Programming Languages
-          </h1>
+          </h2>
         </div>
         <div className="cardContainer flex flex-wrap px-[6vw] w-[100%]">
           {languages.map((language, index) => (
@@ -91,9 +91,9 @@ const Skills = () => {
 
       <section className="relative flex flex-col justify-center items-center py-[8vh] min-h-[100vh] h-[auto] w-[auto] max-w-[100vw] sm:flex-col bg-[#cbadfc]">
         <div className="py-[2rem] flex justify-center w-[100%] px-[6vw]">
-          <h1 className="  text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
+          <h2 className="  text-[#5d1048] text-[2rem] sm:text-[1.2rem] tracking-wide w-[100%]">
             Databases
-          </h1>
+          </h2>
         </div>
         <div className="cardContainer flex flex-wrap px-[6vw] w-[100%]">
           {databases.map((database, index) => (

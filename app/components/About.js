@@ -68,10 +68,10 @@ const About = () => {
 
       <section className="py-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#92b0e8]">
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
-          <h1 className="text-[2.5rem] text-[#0c1c3b] text-start md:text-[2rem] sm:text-[1.5rem]">
+          <h2 className="text-[2.5rem] text-[#0c1c3b] text-start md:text-[2rem] sm:text-[1.5rem]">
             I study in{" "}
             <span className=" text-[#0c1c3b] tracking-wider">IIT Roorkee</span>
-          </h1>
+          </h2>
           <p className="text-[1.3rem] py-[2rem] md:text-[1.2rem] tracking-wide  text-[#0c1c3b] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
             I am currently in final year of my Bachelor degree. I&apos;m
             persuing engineering in field of Electronics and Communication

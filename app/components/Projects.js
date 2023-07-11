@@ -48,9 +48,9 @@ const Projects = () => {
 
       <section className="projects mazeai relative flex justify-center items-center py-[8vh] h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#76eb84]">
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
-          <h1 className="text-[2.5rem] text-[#125413] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
+          <h2 className="text-[2.5rem] text-[#125413] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
             MazeAI
-          </h1>
+          </h2>
           <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] text-[#125413] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
             It&apos;s a <span className="text-[#100f48]">Maze</span> puzzle game
             project in which user can generate maze of any size and desired
@@ -103,9 +103,9 @@ const Projects = () => {
           />
         </div>
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
-          <h1 className="text-[2.5rem] text-[#583112] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
+          <h2 className="text-[2.5rem] text-[#583112] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
             Visual React
-          </h1>
+          </h2>
           <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem] text-[#583112]">
             It&apos;s a website made in{" "}
             <a
