@@ -148,8 +148,8 @@ const Projects = () => {
           <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] text-[#1f0a36] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
             It&apos;s a Question paper making website, where its format is
             predesigned to generate a question paper. This tool is mainly useful
-            when you don't have much time to make and edit a MS word file. This
-            website is made using NextJS.
+            when you don not have much time to make and edit a MS word file.
+            This website is made using NextJS.
             <br />
             Access the website{" "}
             <a
