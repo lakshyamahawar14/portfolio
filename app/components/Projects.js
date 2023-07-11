@@ -4,14 +4,14 @@ import Image from "next/image";
 const Projects = () => {
   return (
     <>
-      <section className="projects pt-[8vh] luxhealth relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#5dc6ea]">
+      <section className="projects pt-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#5dc6ea]">
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%] sm:max-h-[400px] sm:w-[100%]">
           <Image
             src="/assets/images/chatbot_pfp.png"
-            width={300}
-            height={600}
+            width={250}
+            height={500}
             key={Math.random}
-            className="relative h-[80%] w-[auto] rounded-xl"
+            className="relative h-[100%] w-[auto] rounded-xl"
             alt="A picture of Lux Chatbot"
             priority={true}
           />
