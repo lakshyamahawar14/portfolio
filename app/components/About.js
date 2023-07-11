@@ -74,10 +74,10 @@ const About = () => {
             <span className=" text-[#0c1c3b] tracking-wider">IIT Roorkee</span>
           </h1>
           <p className="text-[1.3rem] py-[2rem] md:text-[1.2rem] tracking-wide  text-[#0c1c3b] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
-            I am currently in final year of my Bachelor degree. I'm persuing
-            engineering in field of Electronics and Communication Engineering
-            from one of the India's oldest and one of the most prestiguous
-            college,{" "}
+            I am currently in final year of my Bachelor degree. I&apos;m
+            persuing engineering in field of Electronics and Communication
+            Engineering from one of the India&apos;s oldest and one of the most
+            prestiguous college,{" "}
             <a
               href="https://en.wikipedia.org/wiki/IIT_Roorkee"
               target="_blank"
