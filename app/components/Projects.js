@@ -8,10 +8,10 @@ const Projects = () => {
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
           <Image
             src="/assets/images/chatbot_pfp.png"
-            width={256}
-            height={512}
+            width={300}
+            height={600}
             key={Math.random}
-            className="relative w-[60%] h-[70%] sm:w-[90%] sm:h-[auto] rounded-xl"
+            className="relative h-[100%] w-[auto] rounded-xl"
             alt="A picture of Lux Chatbot"
             priority={true}
           />
@@ -25,11 +25,8 @@ const Projects = () => {
           </h1>
           <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem] text-[#111649]">
             It&apos;s a chatbot integrated in a website specially designed to
-            provide{" "}
-            <span className="text-[#144b2d]">mental health support</span> to
-            Individuals. This website is made with{" "}
-            <span className="text-[#144b2d]">ReactJS</span> framework. Users can
-            give{" "}
+            provide mental health support to Individuals. This website is made
+            with ReactJS framework. Users can give{" "}
             <a
               href="https://my.clevelandclinic.org/health/articles/22306-cognitive-test"
               target="_blank"
@@ -70,9 +67,7 @@ const Projects = () => {
               difficulty of the maze
             </a>{" "}
             based on many metrics. The original project code is written in{" "}
-            <span className="text-[#100f48]">Python</span>, this is just a{" "}
-            <span className="text-[#100f48]">ReactJS</span> implementation of
-            that project.
+            Python, this is just a ReactJS implementation of that project.
             <br />
             Access the website{" "}
             <a
@@ -88,15 +83,68 @@ const Projects = () => {
         <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%]">
           <Image
             src="/assets/images/maze15_pfp.png"
-            width={256}
-            height={256}
+            width={300}
+            height={300}
             key={Math.random}
-            className="relative w-[70%] sm:w-[80%] h-[auto] rounded-xl"
+            className="relative h-[100%] w-[auto] rounded-xl"
             alt="A 15x15 Generated Maze"
             priority={true}
           />
           <p className="text-[1rem] pr-[10px]  text-[#125413] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
             A generated 15x15 maze
+          </p>
+        </div>
+      </section>
+
+      <section className="projects pt-[8vh] luxhealth relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#f3b17b]">
+        <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
+          <Image
+            src="/assets/images/visualreact_pfp.png"
+            width={600}
+            height={300}
+            key={Math.random}
+            className="relative h-[100%] w-[auto] rounded-xl"
+            alt="A screenshot of Visual React website"
+            priority={true}
+          />
+          <p className="text-[1rem] pl-[10px]  text-[#583112] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
+            A screenshot of Visual React website
+          </p>
+        </div>
+        <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
+          <h1 className="text-[2.5rem] text-[#583112] tracking-wider text-start md:text-[2rem] sm:text-[1.5rem] ">
+            Visual React
+          </h1>
+          <p className="text-[1.3rem] py-[2rem]  md:text-[1.2rem] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem] text-[#583112]">
+            It's a website made in{" "}
+            <a
+              href="https://svelte.dev/"
+              target="_blank"
+              className="underline text-[#ad4040]"
+            >
+              Svelte
+            </a>{" "}
+            framework. This website simplifies the process of making a React
+            website by allowing people to generate the react code by joining
+            cards to achieve the functionality. This feature is similar to{" "}
+            <a
+              href="https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Blueprints/GettingStarted/"
+              target="_blank"
+              className="underline text-[#ad4040]"
+            >
+              Blueprints
+            </a>{" "}
+            in Unreal Engine.
+            <br />
+            Access the website{" "}
+            <a
+              href="https://visual-react.vercel.app/"
+              target="_blank"
+              className="underline text-[#ad4040]"
+            >
+              here
+            </a>
+            .
           </p>
         </div>
       </section>

@@ -10,15 +10,15 @@ const About = () => {
         <div className="px-[3vw] flex flex-col justify-center items-start sm:items-center w-[80%]">
           <Image
             src="/assets/images/heathjoker_pfp.jpg"
-            width={256}
-            height={256}
+            width={300}
+            height={300}
             key={Math.random}
-            className="relative w-[70%] sm:w-[80%] h-[auto] rounded-xl"
-            alt="Picture picture of Author"
+            className="relative h-[100%] w-[auto] rounded-xl"
+            alt="Picture picture of Lakshya Mahawar"
             priority={true}
           />
           <p className="text-[1rem] pl-[10px] tracking-wide text-[#134c4d] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
-            Pic of Lakshya Mahawar
+            Profile picture of Lakshya Mahawar
           </p>
         </div>
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[50%] sm:max-w-[none]">
@@ -91,15 +91,15 @@ const About = () => {
         <div className="px-[3vw] flex flex-col justify-center items-end sm:items-center w-[80%]">
           <Image
             src="/assets/images/iitr_bg-min.jpg"
-            width={256}
-            height={256}
+            width={300}
+            height={300}
             key={Math.random}
-            className="relative w-[70%] sm:w-[80%] h-[auto] rounded-xl"
-            alt="Picture picture of Author"
+            className="relative h-[100%] w-[auto] rounded-xl"
+            alt="Picture IIT Roorkee"
             priority={true}
           />
           <p className="text-[1rem] pr-[10px] tracking-wide text-[#134c4d] pt-[1.3rem] md:text-[0.9rem] sm:text-[0.8rem] md:pt-[1rem] sm:py-[0.8rem]">
-            IIT Roorkee
+            Picture IIT Roorkee
           </p>
         </div>
       </section>
