@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 import { BiCodeAlt } from "react-icons/bi";
+import { TiMessageTyping } from "react-icons/ti";
 
 const About = () => {
   return (
@@ -30,7 +31,8 @@ const About = () => {
           </h1>
           <p className="text-[1.3rem] py-[2rem] md:text-[1.2rem] tracking-wide  text-[#134c4d] sm:text-[1rem] md:py-[1.7rem] sm:py-[1.3rem]">
             I&apos;m 20 Years Old. I live in Rajasthan, India. My hobby is
-            playing video games and watching movies. My favourite movie is{" "}
+            playing video games, watching movies and typing. My favourite movie
+            is{" "}
             <a
               href="https://www.imdb.com/title/tt0816692/"
               target="_blank"
@@ -104,9 +106,9 @@ const About = () => {
         </div>
       </section>
 
-      <section className="about py-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#96e5f3]">
+      <section className="about py-[8vh] relative flex justify-center items-center h-[100vh] w-[100vw] sm:flex-col px-[6vw] bg-[#eaa7e1]">
         <div className="px-[3vw] flex justify-center items-start flex-col sm:items-center max-w-[80%] sm:max-w-[none] w-[100%]">
-          <h2 className="text-[2.5rem] text-[#0c3b43] text-center md:text-[2rem] sm:text-[1.5rem] w-[100%]">
+          <h2 className="text-[2.5rem] text-[#430e3c] text-center md:text-[2rem] sm:text-[1.5rem] w-[100%]">
             Social Media & Other Links
           </h2>
           <div className="w-[100%]">
@@ -117,7 +119,7 @@ const About = () => {
                 className="flex justify-center items-center my-[10px]"
               >
                 <span className="flex justify-center items-center my-[10px] sm:text-[0.8rem]">
-                  <AiFillGithub size={25} color="#0c3b43" />{" "}
+                  <AiFillGithub size={25} color="#430e3c" />{" "}
                   <span className="px-[5px]">Github</span>
                 </span>
               </a>
@@ -127,7 +129,7 @@ const About = () => {
                 className="flex justify-center items-center my-[10px]"
               >
                 <span className="flex justify-center items-center my-[10px] sm:text-[0.8rem]">
-                  <AiFillLinkedin size={25} color="#0c3b43" />{" "}
+                  <AiFillLinkedin size={25} color="#430e3c" />{" "}
                   <span className="px-[5px]">LinkedIn</span>
                 </span>
               </a>
@@ -140,7 +142,7 @@ const About = () => {
                 className="flex justify-center items-center my-[10px]"
               >
                 <span className="flex justify-center items-center my-[10px] sm:text-[0.8rem]">
-                  <AiFillInstagram size={25} color="#0c3b43" />{" "}
+                  <AiFillInstagram size={25} color="#430e3c" />{" "}
                   <span className="px-[5px]">Instagram</span>
                 </span>
               </a>
@@ -150,7 +152,7 @@ const About = () => {
                 className="flex justify-center items-center my-[10px]"
               >
                 <span className="flex justify-center items-center my-[10px] sm:text-[0.8rem]">
-                  <BiCodeAlt size={25} color="#0c3b43" />{" "}
+                  <BiCodeAlt size={25} color="#430e3c" />{" "}
                   <span className="px-[5px]">CodeChef</span>
                 </span>
               </a>
@@ -163,8 +165,19 @@ const About = () => {
                 className="flex justify-center items-center my-[10px]"
               >
                 <span className="flex justify-center items-center my-[10px] sm:text-[0.8rem]">
-                  <BiCodeAlt size={25} color="#0c3b43" />{" "}
+                  <BiCodeAlt size={25} color="#430e3c" />{" "}
                   <span className="px-[5px]">LeetCode</span>
+                </span>
+              </a>
+
+              <a
+                href="https://10fastfingers.com/user/2769484/"
+                target="_blank"
+                className="flex justify-center items-center my-[10px]"
+              >
+                <span className="flex justify-center items-center my-[10px] sm:text-[0.8rem]">
+                  <TiMessageTyping size={25} color="#430e3c" />{" "}
+                  <span className="px-[5px]">10fastfingers</span>
                 </span>
               </a>
             </p>

@@ -65,9 +65,9 @@ const Contact = () => {
   };
   return (
     <>
-      <div className="isolate bg-[#56cae1] px-[6vw] py-[8vh]">
+      <div className="isolate bg-[#f8d38f] px-[6vw] py-[8vh]">
         <div className="mx-auto max-w-2xl text-center mt-[4vh]">
-          <h1 className="text-[2.5rem] md:text-[2rem] sm:text-[1.5rem] text-[#0e2f36] sm:text-4xl  tracking-wide">
+          <h1 className="text-[2.5rem] md:text-[2rem] sm:text-[1.5rem] text-[#37280c] sm:text-4xl  tracking-wide">
             Contact Me
           </h1>
         </div>
@@ -76,7 +76,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="fullname"
-                className="block text-sm leading-6  tracking-wide text-[#0e2f36]"
+                className="block text-sm leading-6  tracking-wide text-[#37280c]"
               >
                 Full Name
               </label>
@@ -96,7 +96,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="profession"
-                className="block text-sm leading-6  tracking-wide text-[#0e2f36]"
+                className="block text-sm leading-6  tracking-wide text-[#37280c]"
               >
                 Profession
               </label>
@@ -116,7 +116,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="email"
-                className="block text-sm leading-6  tracking-wide text-[#0e2f36]"
+                className="block text-sm leading-6  tracking-wide text-[#37280c]"
               >
                 Email
               </label>
@@ -136,7 +136,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="phone"
-                className="block text-sm leading-6  tracking-wide text-[#0e2f36]"
+                className="block text-sm leading-6  tracking-wide text-[#37280c]"
               >
                 Phone Number
               </label>
@@ -156,7 +156,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="subject"
-                className="block text-sm leading-6  tracking-wide text-[#0e2f36]"
+                className="block text-sm leading-6  tracking-wide text-[#37280c]"
               >
                 Subject
               </label>
@@ -176,7 +176,7 @@ const Contact = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="message"
-                className="block text-sm leading-6  tracking-wide text-[#0e2f36]"
+                className="block text-sm leading-6  tracking-wide text-[#37280c]"
               >
                 Message
               </label>
